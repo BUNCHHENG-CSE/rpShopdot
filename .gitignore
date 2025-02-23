@@ -1,0 +1,59 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore sensitive configuration files
+.env
+.env.local
+.env.*.local
+*.ini
+*.log
+
+# Ignore Composer dependencies
+/vendor/
+/composer.lock
+
+# Ignore PHPUnit test results
+/phpunit.xml
+/phpunit.xml.dist
+
+# Ignore cache and logs
+/node_modules/
+/vendor/
+/var/
+/storage/
+/logs/
+/cache/
+/tmp/
+
+# Ignore IDE/editor files
+.idea/
+.vscode/
+*.sublime-workspace
+
+# Ignore deployment files
+/.env
+/.DS_Store
+/.vagrant/
+/*.swp
+/deployment/
+/deploy/
+
+# Ignore Laravel-specific files
+bootstrap/cache/
+storage/*.key
+storage/oauth-public.key
+storage/oauth-private.key
+
+# Ignore WordPress-specific files
+wp-config.php
+.htaccess
+
+# Ignore built assets
+/public/hot
+/public/storage
+/public/build
+/public/mix-manifest.json
+
+# Ignore uploaded files (optional)
+public/uploads/
