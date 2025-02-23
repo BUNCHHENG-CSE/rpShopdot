@@ -1,0 +1,593 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Moul&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Khmer&display=swap");
+
+/* font-family: "Moul", serif;
+font-family: "Khmer", sans-serif;
+*/
+:root {
+    --primary: #1e1e1e;
+    --light: #f1f1f1;
+    --warning: #f06804;
+}
+.text-primary {
+    color: var(--primary) !important;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    overflow-x: hidden;
+    background-color: #f1f1f1;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+/*********START INDEX************/
+/*Header*/
+header {
+    position: absolute;
+    z-index: 999999;
+    width: 100%;
+}
+
+header .nav-item .nav-link {
+    font-size: 17px;
+    color: var(--primary);
+    font-weight: 700;
+    margin-left: 20px;
+}
+
+header .nav-item .dropdown-menu {
+    background-color: hsla(0, 0%, 88%, 0.7);
+    border-radius: 10px;
+}
+
+header .nav-item .dropdown-menu .dropdown-item {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+header .nav-item .dropdown-menu .dropdown-item:hover {
+    background-color: #f06804;
+}
+
+.navbar {
+    background-color: transparent;
+    transition: 0.5s ease-in-out, padding 0.5s ease-in-out;
+    height: 12vh;
+}
+
+.navbar-scrolled {
+    background-color: hsla(0, 0%, 88%, 0.95);
+    box-shadow: 0 3px 10px rgb(0, 0, 0.15);
+}
+
+.navbar-toggler {
+    outline: none !important;
+    border: none !important;
+    color: var(--warning) !important;
+    box-shadow: none !important;
+    border-radius: none !important;
+}
+
+.navbar-brand .rupp-logo {
+    width: 100px;
+    height: 100px;
+    z-index: 1;
+}
+
+.navbar-toggler .navbar-icon {
+    font-size: 40px;
+}
+
+.navbar-brand .university-name {
+    color: var(--primary);
+}
+
+.navbar-brand .university-name #university-name-kh {
+    font-family: "Moul", serif;
+    font-style: normal;
+}
+
+.navbar-brand .university-name #university-name-en {
+    font-family: "Abril Fatface", serif;
+    font-size: 20px;
+}
+
+/*main hero sectio*/
+.hero {
+    width: 100%;
+}
+
+.hero .carousel-item img {
+    width: 100%;
+    height: 100vh;
+    background-size: cover !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    z-index: -1;
+    filter: opacity(0.8);
+}
+
+.hero .carousel-item:after {
+    content: "";
+    background: linear-gradient(180deg, hsla(0, 0%, 88%, 0) 29.9%, #f3f4f4);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* opacity: 1; */
+}
+
+.hero .carousel-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+
+.hero .carousel-content-container {
+    text-align: center;
+    color: var(--primary);
+    z-index: 1;
+}
+
+.hero .carousel-content-container h2 {
+    font-family: "Abril Fatface", serif;
+    font-size: 80px;
+    font-weight: 500;
+}
+
+.hero .carousel-content-container p {
+    width: 70%;
+    text-transform: capitalize;
+    font-size: 25px;
+    margin: 0 auto 30px auto;
+}
+
+.buttons .button1 {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    display: inline-block;
+    padding: 12px 30px;
+    line-height: 1px;
+    margin: 10px 10px;
+    color: var(--primary);
+    border: 1px solid var(--primary);
+    border-radius: 50px;
+}
+.product-grid {
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 350px;
+    margin-bottom: 20px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+.info {
+    padding: 6vh 7vh;
+}
+.price {
+    margin-top: 2rem;
+}
+.lower {
+    margin-top: 3rem;
+}
+.lower i {
+    padding: 2.5vh;
+    margin-right: 1vh;
+    color: grey;
+    border: 1px solid rgb(85, 85, 85);
+}
+.lower .col {
+    padding: 0;
+}
+@media (max-width: 768px) {
+    .lower i {
+        padding: 2vh;
+        margin-right: 1vh;
+        color: grey;
+        border: 1px solid rgb(85, 85, 85);
+    }
+}
+li a.cart {
+    color: black;
+}
+li a.cart span {
+    position: relative;
+}
+li a.cart span small {
+    position: absolute;
+    top: -20px;
+    right: -15px;
+    padding: 10px 6px;
+    line-height: 0;
+    font-size: 11px;
+    background: #848484;
+    color: white;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+}
+@media (max-width: 768px) {
+    .hero .carousel-content-container h2 {
+        font-size: 35px;
+    }
+
+    .hero .carousel-content-container p {
+        font-size: 13px;
+    }
+
+    .buttons .button1 {
+        font-size: 13px;
+        padding: 9px 30px;
+    }
+
+    .hero .carousel-item img {
+        height: 57vh;
+    }
+
+    .navbar-brand .rupp-logo {
+        width: 80px;
+        height: 80px;
+    }
+
+    #navbarSupportedContent {
+        background-color: #040f28;
+        opacity: 0.9;
+    }
+}
+
+@media (max-width: 991px) {
+    .hero .carousel-item img {
+        height: 70vh;
+    }
+
+    #navbarSupportedContent {
+        background-color: #040f28;
+        opacity: 0.9;
+    }
+}
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: none;
+    }
+
+    /* .navbar .nav-item:hover .nav-link {} */
+
+    .navbar .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+
+    .navbar .nav-item .dropdown-menu {
+        margin-top: 0;
+    }
+}
+
+/* ============ desktop view .end ============ */
+/*Feature Section*/
+.feature .main-feature-box {
+    margin-bottom: 30px;
+    background-color: var(--light);
+    box-shadow: 0 10px 55px 5px rgb(137, 173, 255, 0.2);
+    position: relative;
+    padding: 25px 20px;
+    z-index: 1;
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.feature .main-feature-box .icon {
+    margin-bottom: 20px;
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    border-radius: 70% 30% 30% 70% / 60% 40% 60% 40%;
+    /* background-color: var(--primary); */
+    color: var(--primary);
+    transition: 0.5s;
+    font-size: 25px;
+}
+
+.feature .main-feature-box h3 {
+    font-size: 19px;
+    font-weight: 700;
+    padding-bottom: 7px;
+    position: relative;
+}
+
+.feature .main-feature-box p {
+    font-size: 14px;
+    padding-bottom: 7px;
+    text-transform: capitalize;
+    position: relative;
+}
+
+/*About Section*/
+
+.about {
+    position: relative;
+}
+
+.about span {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary);
+    font-size: 17px;
+}
+
+.about h2 {
+    font-family: "Abril Fatface", serif;
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.about p {
+    font-size: 14px;
+    text-align: justify;
+}
+
+.buttons .button3 {
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    display: inline-block;
+    padding: 10px 30px;
+    line-height: 1px;
+    margin: 10px 10px;
+    color: var(--light);
+    background-color: var(--primary);
+    border: 1px solid var(--light);
+    border-radius: 50px;
+}
+
+/*Course Section*/
+.productfeature .single-courses-box {
+    margin-bottom: 30px;
+    position: relative;
+    padding: 40px 30px;
+    z-index: 1;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.productfeature .single-courses-box .icon {
+    margin-bottom: 21px;
+}
+
+.productfeature .single-courses-box h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.productfeature .single-courses-box p {
+    font-size: 14px;
+    text-align: justify;
+}
+
+/*Choose Section*/
+.choose .choose-item {
+    padding: 10px;
+}
+
+.choose .choose-item h3 {
+    font-size: 22px;
+    font-weight: 6000;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.choose .choose-item p {
+    font-size: 14px;
+    text-align: justify;
+}
+
+/*Overview Section*/
+.overview .single-courses-box h3 {
+    text-align: start;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.overview .single-courses-box .counter {
+    font-size: 57px;
+
+    text-align: start;
+}
+
+/*Footer section*/
+.footer-section .footer-rupp .rupp-logo {
+    width: 50px;
+    height: 50px;
+}
+
+.footer-section .footer-rupp #footer-university-name-kh {
+    font-family: "Moul", serif;
+    font-size: 15px;
+    font-style: normal;
+    letter-spacing: 1px;
+}
+
+.footer-section .footer-rupp #footer-university-name-en {
+    font-family: "Abril Fatface", serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.footer-bg {
+    background-color: hsla(0, 0%, 88%, 0.9);
+}
+
+#fh5co-started,
+#fh5co-contact,
+#fh5co-about {
+    padding: 7em 0;
+    clear: both;
+}
+@media screen and (max-width: 768px) {
+    #fh5co-started,
+    #fh5co-contact,
+    #fh5co-about {
+        padding: 3em 0;
+    }
+}
+#fh5co-started {
+    background: #848484;
+}
+#fh5co-started .fh5co-heading h2 {
+    color: #fff;
+    margin-bottom: 20px !important;
+}
+#fh5co-started .fh5co-heading p {
+    color: rgba(255, 255, 255, 0.6);
+}
+#fh5co-started .form-control {
+    background: rgba(255, 255, 255, 0.2);
+    border: none !important;
+    color: #fff;
+    font-size: 16px !important;
+    width: 100%;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+#fh5co-started .btn {
+    height: 54px;
+    border: none !important;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+#fh5co-started .form-inline .form-group {
+    width: 100% !important;
+    margin-bottom: 10px;
+}
+#fh5co-started .form-inline .form-group .form-control {
+    width: 100%;
+}
+.fh5co-heading {
+    margin-bottom: 5em;
+}
+.fh5co-heading.fh5co-heading-sm {
+    margin-bottom: 2em;
+}
+.fh5co-heading h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    line-height: 1.5;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000;
+}
+.fh5co-heading p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #828282;
+}
+.fh5co-heading span {
+    display: block;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+.fh5co-staff {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.fh5co-staff img {
+    width: 170px;
+    margin-bottom: 20px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    border-radius: 50%;
+}
+.fh5co-staff h3 {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+.fh5co-staff p {
+    margin-bottom: 30px;
+}
+.fh5co-staff .role {
+    color: #bfbfbf;
+    margin-bottom: 30px;
+    font-weight: normal;
+    display: block;
+}
+.to-top {
+
+    position: fixed;
+    bottom: 16px;
+    right: 0px;
+    width: 50px;
+    height: 50px;
+    /* border-radius: 50%; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #1f1f1f;
+    text-decoration: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.4s;
+    border: none;
+}
+
+.to-top.active {
+    bottom: 32px;
+    pointer-events: auto;
+    opacity: 1;
+}
+
+/*********END INDEX************/
+
+/*********START ABOUT**********/
+.sub-background-img {
+    width: 100%;
+    height: 65vh !important;
+}
+
+.about-page-content {
+    padding-top: 20px;
+}
+
+.about-page-content p {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.9;
+}
+
+/*********END ABOUT**********/
