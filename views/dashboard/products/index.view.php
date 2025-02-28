@@ -1,155 +1,112 @@
 <?php require base_path('views/dashboard/partials/head.php') ?>
 <?php require base_path('views/dashboard/partials/sidebar.php') ?>
 <?php require base_path('views/dashboard/partials/nav.php') ?>
-<div class="col-md-12 mb-lg-0 mb-4">
-    <div class=" mt-4">
-        <div class=" pb-0 p-3">
-            <div class="row">
-                <div class="col-3 d-flex align-items-center">
-                    <h6 class="mb-0">Products Tables</h6>
+<?php
+ dd($products);
+?>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <?php if (isset($_SESSION['message'])): ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= htmlspecialchars($_SESSION['message']) ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <?php unset($_SESSION['message']); ?>
                 </div>
-                <div class="col-6 d-flex">
-                    <div class="input-group">
-                        <span class="input-group-text text-body"><i class="fas fa-search"
-                                aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Type here...">
-                    </div>
+            <?php endif; ?>
+
+            <?php if (isset($_SESSION['error'])): ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= htmlspecialchars($_SESSION['error']) ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    <?php unset($_SESSION['error']); ?>
                 </div>
-                <div class="col-3 text-end">
-                    <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#productModel" data-bs-whatever="@mdo"><i
-                            class="fas fa-plus"></i>&nbsp;&nbsp;Create New Product</button>
-                    <div class="modal fade" id="productModel" tabindex="-1" aria-labelledby="productModelLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="productModelLabel">New Products</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="" method="POST">
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id="products-name" name="product-name" placeholder="Product Name">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id="stock-name" name="product-stock" placeholder="Product Stock">
-                                        </div>
-                                        <div class="mb-3">
-                                            <input type="text" class="form-control" id="price-name" name="product-price" placeholder="Product Price">
-                                        </div>
-                                        <div class="mb-3">
-                                            <select class="form-select" id="category-name" name="product-category" aria-label="Default select example">
-                                                <option selected>Product Category</option>
-                                                <option value="1">Electronics</option>
-                                                <option value="2">Clothing</option>
-                                                <option value="3">Shoes</option>
-                                            </select>
-                                        </div>
-                                        <div class=" mb-3">
-                                            <input type="file" class="form-control" name="product-image">
-                                        </div>
-                                        <div class="mb-3">
-                                            <textarea class="form-control" id="description-text" name="product-decription" placeholder="Product Description"></textarea>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="submit" class="btn btn-primary">Create</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <?php endif; ?>
+
+            <div class="card mb-4">
+                <div class="card-header pb-0 d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">Products Management</h6>
+                    <button type="button" class="btn bg-gradient-primary" data-bs-toggle="modal" data-bs-target="#createProductModal">
+                        <i class="fas fa-plus me-2"></i>Add New Product
+                    </button>
                 </div>
-            </div>
-        </div>
-        <div class="container-fluid py-4">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card mb-4">
-                        <div class="card-body px-0 pt-0 pb-2">
-                            <div class="table-responsive p-0">
-                                <table class="table align-items-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Name</th>
-                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Price</th>
-                                            <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Stock</th>
-                                            <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Catgory</th>
-                                            <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Description</th>
-                                            <th class="text-secondary opacity-7"></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
+                <div class="card-body px-0 pt-0 pb-2">
+                    <div class="table-responsive p-0">
+                        <table class="table align-items-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Product</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Category</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock</th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php if (empty($products)): ?>
+                                    <tr>
+                                        <td colspan="5" class="text-center py-4">
+                                            <p class="text-xs text-secondary mb-0">No products found</p>
+                                        </td>
+                                    </tr>
+                                <?php else: ?>
+                                    <?php foreach ($products as $product): ?>
                                         <tr>
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="asset/images/MRGB2000JS1A.png" class="avatar avatar-xl me-3" alt="user1">
+                                                        <img src="<?= htmlspecialchars($product['image_url'] ?? 'asset/images/default-product.png') ?>" 
+                                                             class="avatar avatar-sm me-3" 
+                                                             alt="<?= htmlspecialchars($product['name']) ?>">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-lg">MRGB2000JS1A</h6>
+                                                        <h6 class="mb-0 text-sm"><?= htmlspecialchars($product['name']) ?></h6>
+                                                        <p class="text-xs text-secondary mb-0">
+                                                            <?= htmlspecialchars(substr($product['description'] ?? '', 0, 50)) . 
+                                                                (strlen($product['description'] ?? '') > 50 ? '...' : '') ?>
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="text-md font-weight-bold mb-0">$7999.99</p>
-
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <p class="text-md font-weight-bold mb-0">10</p>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <p class="text-md font-weight-bold mb-0">MR-G</p>
+                                                <p class="text-xs font-weight-bold mb-0">
+                                                    <?= htmlspecialchars($product['category_id'] ?? 'Uncategorized') ?>
+                                                </p>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <p class="text-md font-weight-bold mb-0 text-truncate" style="max-width: 150px;">A premium, full-metal G-SHOCK MR-G timepiece for diving — the titanium armor-clad, airtight MRG-BF1000 with ISO 200-meter water resistance — joins the FROGMAN family of full-fledged diver’s watches. A G-SHOCK diving watch carries the reliability of the G-SHOCK name to the depths, providing you with peace of mind that you have the best titanium diving watch.</p>
+                                                <span class="text-secondary text-xs font-weight-bold">
+                                                    $<?= number_format($product['price'], 2) ?>
+                                                </span>
                                             </td>
-                                            <td class="align-middle">
-                                                <div class="ms-auto text-end">
-                                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                            class="fas fa-pencil-alt text-dark me-2 text-md" aria-hidden="true"></i>Edit</a>
-                                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                        href="javascript:;"><i class="far fa-trash-alt me-2 text-md"></i>Delete</a>
+                                            <td class="align-middle text-center">
+                                                <span class="badge bg-gradient-<?= $product['stock'] > 10 ? 'success' : 'warning' ?> text-white">
+                                                    <?= intval($product['stock']) ?>
+                                                </span>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="/products/edit/<?= $product['product_id'] ?>" 
+                                                       class="btn btn-link text-dark px-2 mb-0" 
+                                                       data-bs-toggle="tooltip" 
+                                                       data-bs-placement="top" 
+                                                       title="Edit Product">
+                                                        <i class="fas fa-edit text-primary"></i>
+                                                    </a>
+                                                    <a href="/products/delete/<?= $product['product_id'] ?>" 
+                                                       class="btn btn-link text-danger px-2 mb-0" 
+                                                       data-bs-toggle="tooltip" 
+                                                       data-bs-placement="top" 
+                                                       title="Delete Product"
+                                                       onclick="return confirm('Are you sure you want to delete this product?');">
+                                                        <i class="fas fa-trash-alt text-danger"></i>
+                                                    </a>
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div>
-                                                        <img src="asset/images/MRGB2000JS1A.png" class="avatar avatar-xl me-3" alt="user1">
-                                                    </div>
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-lg">MRGB2000JS1A</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="text-md font-weight-bold mb-0">$7999.99</p>
-
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <p class="text-md font-weight-bold mb-0">10</p>
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <p class="text-md font-weight-bold mb-0">MR-G</p>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <p class="text-md font-weight-bold mb-0 text-truncate" style="max-width: 150px;">A premium, full-metal G-SHOCK MR-G timepiece for diving — the titanium armor-clad, airtight MRG-BF1000 with ISO 200-meter water resistance — joins the FROGMAN family of full-fledged diver’s watches. A G-SHOCK diving watch carries the reliability of the G-SHOCK name to the depths, providing you with peace of mind that you have the best titanium diving watch.</p>
-                                            </td>
-                                            <td class="align-middle">
-                                                <div class="ms-auto text-end">
-                                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                            class="fas fa-pencil-alt text-dark me-2 text-md" aria-hidden="true"></i>Edit</a>
-                                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                        href="javascript:;"><i class="far fa-trash-alt me-2 text-md"></i>Delete</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -157,6 +114,58 @@
     </div>
 </div>
 
-<?php require base_path('views/dashboard/partials/smallerfooter.php') ?>
+<!-- Create Product Modal -->
+<div class="modal fade" id="createProductModal" tabindex="-1" aria-labelledby="createProductModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createProductModalLabel">Create New Product</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/products/create" method="POST" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="product-name" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="product-name" name="name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="product-category" class="form-label">Category</label>
+                            <select class="form-select" id="product-category" name="category_id" required>
+                                <option value="">Select Category</option>
+                                <option value="1">Electronics</option>
+                                <option value="2">Clothing</option>
+                                <option value="3">Accessories</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="product-price" class="form-label">Price</label>
+                            <input type="number" step="0.01" class="form-control" id="product-price" name="price" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="product-stock" class="form-label">Stock Quantity</label>
+                            <input type="number" class="form-control" id="product-stock" name="stock" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="product-description" class="form-label">Description</label>
+                        <textarea class="form-control" id="product-description" name="description" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="product-image" class="form-label">Product Image</label>
+                        <input type="file" class="form-control" id="product-image" name="image" accept="image/*">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
+<?php require base_path('views/dashboard/partials/smallerfooter.php') ?>
 <?php require base_path('views/dashboard/partials/footer.php') ?>

@@ -20,14 +20,7 @@ class CloudinaryConfig {
             ],
             'url' => [
                 'secure' => true
-            ],
-            'logging' => [
-                'level' => 'debug'
-            ],
-            'curl_options' => [
-            CURLOPT_SSL_VERIFYPEER => false,
-                CURLOPT_SSL_VERIFYHOST => 0
-              ]
+            ]
         ]);
     }
     private function validateCredentials() {
@@ -39,17 +32,10 @@ class CloudinaryConfig {
 
         foreach ($requiredVars as $var) {
             if (empty($_ENV[$var])) {
-                error_log("Missing Cloudinary credential: $var");
                 throw new \RuntimeException("Missing Cloudinary credential: $var");
             }
         }
-
-        if (strlen($_ENV['CLOUDINARY_API_KEY']) < 10) {
-            error_log("Invalid Cloudinary API Key");
-            throw new \RuntimeException("Invalid Cloudinary API Key");
-        }
     }
-
     public static function getInstance(): self {
         if (self::$instance === null) {
             self::$instance = new self();
