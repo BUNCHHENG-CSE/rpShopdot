@@ -16,7 +16,6 @@
                     </div>
                 </div>
                 <div class="col-3 text-end">
-
                     <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#productModel" data-bs-whatever="@mdo"><i
                             class="fas fa-plus"></i>&nbsp;&nbsp;Create New Product</button>
                     <div class="modal fade" id="productModel" tabindex="-1" aria-labelledby="productModelLabel" aria-hidden="true">

@@ -1,3 +1,5 @@
 <?php
 
-view('dashboard/users/index.view.php');
+view('dashboard/users/index.view.php',[
+    "heading" => "Users"
+]);
