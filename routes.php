@@ -16,3 +16,4 @@ $router->get('/dashboard', 'dashboard/index.php');
 $router->get('/table', 'dashboard/table.php');
 $router->get('/billing', 'dashboard/billing.php');
 $router->get('/profile', 'dashboard/profile.php');
+$router->get('/tbproducts', 'dashboard/products/index.php');
