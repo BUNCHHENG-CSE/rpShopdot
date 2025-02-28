@@ -5,16 +5,20 @@
     <div class=" mt-4">
         <div class=" pb-0 p-3">
             <div class="row">
-                <div class="col-6 d-flex align-items-center">
+                <div class="col-3 d-flex align-items-center">
                     <h6 class="mb-0">Products Tables</h6>
                 </div>
-                <div class="col-6 text-end">
-                    <!-- <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i
-                            class="fas fa-plus"></i>&nbsp;&nbsp;Add New Card</a> -->
+                <div class="col-6 d-flex">
+                    <div class="input-group">
+                        <span class="input-group-text text-body"><i class="fas fa-search"
+                                aria-hidden="true"></i></span>
+                        <input type="text" class="form-control" placeholder="Type here...">
+                    </div>
+                </div>
+                <div class="col-3 text-end">
 
                     <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#productModel" data-bs-whatever="@mdo"><i
-                            class="fas fa-plus"></i>&nbsp;&nbsp;Add New Card</button>
-
+                            class="fas fa-plus"></i>&nbsp;&nbsp;Create New Product</button>
                     <div class="modal fade" id="productModel" tabindex="-1" aria-labelledby="productModelLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -25,22 +29,33 @@
                                 <div class="modal-body">
                                     <form action="" method="POST">
                                         <div class="mb-3">
-                                            <label for="products-name" class="col-form-label">Name:</label>
-                                            <input type="text" class="form-control" id="products-name" name="product-name">
+                                            <input type="text" class="form-control" id="products-name" name="product-name" placeholder="Product Name">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="stock-name" class="col-form-label">Stock:</label>
-                                            <input type="text" class="form-control" id="stock-name" name="product-stock">
+                                            <input type="text" class="form-control" id="stock-name" name="product-stock" placeholder="Product Stock">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="description-text" class="col-form-label">Description:</label>
-                                            <textarea class="form-control" id="description-text" name="product-decription"></textarea>
+                                            <input type="text" class="form-control" id="price-name" name="product-price" placeholder="Product Price">
+                                        </div>
+                                        <div class="mb-3">
+                                            <select class="form-select" id="category-name" name="product-category" aria-label="Default select example">
+                                                <option selected>Product Category</option>
+                                                <option value="1">Electronics</option>
+                                                <option value="2">Clothing</option>
+                                                <option value="3">Shoes</option>
+                                            </select>
+                                        </div>
+                                        <div class=" mb-3">
+                                            <input type="file" class="form-control" name="product-image">
+                                        </div>
+                                        <div class="mb-3">
+                                            <textarea class="form-control" id="description-text" name="product-decription" placeholder="Product Description"></textarea>
                                         </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Send message</button>
+                                    <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
                             </div>
                         </div>
@@ -57,11 +72,11 @@
                                 <table class="table align-items-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
-                                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Price</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Catgory</th>
-                                            <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Name</th>
+                                            <th class="text-uppercase text-secondary text-xs font-weight-bolder opacity-7 ps-2">Price</th>
+                                            <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Stock</th>
+                                            <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Catgory</th>
+                                            <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Description</th>
                                             <th class="text-secondary opacity-7"></th>
                                         </tr>
                                     </thead>
@@ -70,37 +85,68 @@
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="asset/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1">
+                                                        <img src="asset/images/MRGB2000JS1A.png" class="avatar avatar-xl me-3" alt="user1">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm">John Michael</h6>
-                                                        <p class="text-xs text-secondary mb-0">john@creative-tim.com</p>
+                                                        <h6 class="mb-0 text-lg">MRGB2000JS1A</h6>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="text-xs font-weight-bold mb-0">Manager</p>
-                                                <p class="text-xs text-secondary mb-0">Organization</p>
+                                                <p class="text-md font-weight-bold mb-0">$7999.99</p>
+
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">Online</span>
+                                                <p class="text-md font-weight-bold mb-0">10</p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <span class="badge badge-sm bg-gradient-success">Online</span>
+                                                <p class="text-md font-weight-bold mb-0">MR-G</p>
                                             </td>
                                             <td class="align-middle text-center">
-                                                <span class="text-secondary text-xs font-weight-bold">23/04/18</span>
+                                                <p class="text-md font-weight-bold mb-0 text-truncate" style="max-width: 150px;">A premium, full-metal G-SHOCK MR-G timepiece for diving — the titanium armor-clad, airtight MRG-BF1000 with ISO 200-meter water resistance — joins the FROGMAN family of full-fledged diver’s watches. A G-SHOCK diving watch carries the reliability of the G-SHOCK name to the depths, providing you with peace of mind that you have the best titanium diving watch.</p>
                                             </td>
                                             <td class="align-middle">
                                                 <div class="ms-auto text-end">
                                                     <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                            class="fas fa-pencil-alt text-dark me-2" aria-hidden="true"></i>Edit</a>
+                                                            class="fas fa-pencil-alt text-dark me-2 text-md" aria-hidden="true"></i>Edit</a>
                                                     <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                        href="javascript:;"><i class="far fa-trash-alt me-2"></i>Delete</a>
+                                                        href="javascript:;"><i class="far fa-trash-alt me-2 text-md"></i>Delete</a>
                                                 </div>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex px-2 py-1">
+                                                    <div>
+                                                        <img src="asset/images/MRGB2000JS1A.png" class="avatar avatar-xl me-3" alt="user1">
+                                                    </div>
+                                                    <div class="d-flex flex-column justify-content-center">
+                                                        <h6 class="mb-0 text-lg">MRGB2000JS1A</h6>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <p class="text-md font-weight-bold mb-0">$7999.99</p>
 
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-md font-weight-bold mb-0">10</p>
+                                            </td>
+                                            <td class="align-middle text-center text-sm">
+                                                <p class="text-md font-weight-bold mb-0">MR-G</p>
+                                            </td>
+                                            <td class="align-middle text-center">
+                                                <p class="text-md font-weight-bold mb-0 text-truncate" style="max-width: 150px;">A premium, full-metal G-SHOCK MR-G timepiece for diving — the titanium armor-clad, airtight MRG-BF1000 with ISO 200-meter water resistance — joins the FROGMAN family of full-fledged diver’s watches. A G-SHOCK diving watch carries the reliability of the G-SHOCK name to the depths, providing you with peace of mind that you have the best titanium diving watch.</p>
+                                            </td>
+                                            <td class="align-middle">
+                                                <div class="ms-auto text-end">
+                                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
+                                                            class="fas fa-pencil-alt text-dark me-2 text-md" aria-hidden="true"></i>Edit</a>
+                                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0"
+                                                        href="javascript:;"><i class="far fa-trash-alt me-2 text-md"></i>Delete</a>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

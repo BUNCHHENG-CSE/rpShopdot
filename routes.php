@@ -17,3 +17,6 @@ $router->get('/table', 'dashboard/table.php');
 $router->get('/billing', 'dashboard/billing.php');
 $router->get('/profile', 'dashboard/profile.php');
 $router->get('/tbproducts', 'dashboard/products/index.php');
+$router->get('/tbcategories', 'dashboard/categories/index.php');
+$router->get('/tbusers', 'dashboard/users/index.php');
+$router->get('/tborders', 'dashboard/orders/index.php');
