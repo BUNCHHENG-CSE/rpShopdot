@@ -34,33 +34,22 @@ class ProductsController
             'categories' => $categories
         ]);
     }
-    public function showOneProduct($request)
+    public function showOneProduct($id)
     {
-        $id = $request['product_id'] ?? null;
         $product = $this->db->query("
-        SELECT
-            p.product_id,
-            p.name,
-            p.description,
-            p.price,
-            p.stock,
-            p.image_url,
-            c.category_name,
-            c.description AS category_description
+        SELECT p.*, c.category_name
         FROM products p
         LEFT JOIN categories c ON p.category_id = c.category_id
         WHERE p.product_id = ?
-    ", [$id])->find();
+    ", [$id])->findOrFail();
         $relatedProducts = $this->db->query("
-        SELECT
-            product_id,
-            name,
-            price,
-            image_url
-        FROM products
-        WHERE category_id = ? AND product_id != ?
+        SELECT p.*, c.category_name
+        FROM products p
+        LEFT JOIN categories c ON p.category_id = c.category_id
+        WHERE p.category_id = ? AND p.product_id != ?
         LIMIT 4
     ", [$product['category_id'], $id])->get();
+
         view('client/products/show.view.php', [
             'product' => $product,
             'relatedProducts' => $relatedProducts
