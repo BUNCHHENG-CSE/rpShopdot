@@ -16,22 +16,22 @@
                     </div>
                 </div>
                 <div class="col-3 text-end">
-                    <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#productModel" data-bs-whatever="@mdo"><i
+                    <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#categoryModel" data-bs-whatever="@mdo"><i
                             class="fas fa-plus"></i>&nbsp;&nbsp;Create New Category</button>
-                    <div class="modal fade" id="productModel" tabindex="-1" aria-labelledby="productModelLabel" aria-hidden="true">
+                    <div class="modal fade" id="categoryModel" tabindex="-1" aria-labelledby="categoryModelLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="productModelLabel">New Products</h1>
+                                    <h1 class="modal-title fs-5" id="categoryModelLabel">New Catgory</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
                                     <form action="" method="POST">
                                         <div class="mb-3">
-                                            <input type="text" class="form-control" id="products-name" name="category-name" placeholder="Category Name">
+                                            <input type="text" class="form-control" id="category-name" name="category-name" placeholder="Category Name">
                                         </div>
                                         <div class="mb-3">
-                                            <textarea class="form-control" id="description-text" name="category-decription" placeholder="Category Description"></textarea>
+                                            <textarea class="form-control" id="category-decription" name="category-decription" placeholder="Category Description"></textarea>
                                         </div>
                                     </form>
                                 </div>

@@ -1,5 +1,5 @@
-<?php include base_path('views/partials/head.php') ?>
-<?php include base_path('views/partials/nav.php') ?>
+<?php require base_path('views/client/partials/head.php') ?>
+<?php require base_path('views/client/partials/nav.php') ?>
 
 <section class="hero" id="hero">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -105,4 +105,4 @@
     </div>
 
 </section>
-<?php include base_path('views/partials/footer.php') ?>
+<?php require base_path('views/client/partials/footer.php') ?>

@@ -547,7 +547,6 @@ li a.cart span small {
     display: block;
 }
 .to-top {
-
     position: fixed;
     bottom: 16px;
     right: 0px;
@@ -591,3 +590,30 @@ li a.cart span small {
 }
 
 /*********END ABOUT**********/
+
+.btnLogin {
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.btnLogin:focus,
+.btnLogin:active {
+    outline: none !important;
+    box-shadow: none !important;
+
+}
+.btnLogin {
+    outline: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.btnFormClose:focus,
+.btnFormClose:active {
+    outline: none !important;
+    box-shadow: none !important;
+
+}
