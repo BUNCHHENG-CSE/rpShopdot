@@ -62,14 +62,14 @@ class CategoriesController
         $this->db->query("
             UPDATE categories
             SET category_name = ?,
-                description = ?,
+                description = ?
             WHERE category_id = ? ", [
             $request['categories-name-update'],
             $request['categories-decription-update'] ?? '',
             $id
         ]);
 
-        redirect('/categories');
+        redirect('/tbcategories');
     }
 
     public function destroy($request)
