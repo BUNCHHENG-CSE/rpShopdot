@@ -1,18 +1,24 @@
-<?php include base_path('views/client/partials/head.php') ?>
-<?php include base_path('views/client/partials/nav.php') ?>
+<?php require base_path('views/client/partials/head.php') ?>
+<?php require base_path('views/client/partials/nav.php') ?>
 
 <section class="hero" id="hero">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <div class="carousel-background">
-                <img src="asset/images/img_bg_2.jpg" alt="" style="object-fit: cover;">
-                <div class="carousel-container">
-                    <div class="carousel-content-container">
-                        <h2>Product Details</h2>
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="carousel-background">
+                    <img src="asset/images/sider7.png" alt="" style="object-fit: cover;">
+                    <div class="carousel-container">
+                        <div class="carousel-content-container">
+                            <h2>Products</h2>
+                        </div>
                     </div>
+
+
                 </div>
             </div>
+
         </div>
+
     </div>
 </section>
 
@@ -76,4 +82,4 @@
     </div>
 </section>
 
-<?php include base_path('views/client/partials/footer.php') ?>
+<?php require base_path('views/client/partials/footer.php') ?>
