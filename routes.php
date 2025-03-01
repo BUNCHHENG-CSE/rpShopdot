@@ -7,6 +7,7 @@ $router->get('/about', 'client/about.php');
 $router->get('/contact', 'client/contact.php');
 
 $router->get('/products', 'client/products/index.php');
+
 $router->get('/product/{id}', 'client/products/show.php');
 $router->get('/cart', 'client/cart/index.php');
 $router->get('/profile', 'client/profile/index.php');

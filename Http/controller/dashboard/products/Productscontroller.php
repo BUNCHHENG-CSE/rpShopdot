@@ -38,12 +38,12 @@ class ProductsController
     {
         $id = $request['product_id'] ?? null;
         $product = $this->db->query("
-        SELECT 
-            p.product_id, 
-            p.name, 
-            p.description, 
-            p.price, 
-            p.stock, 
+        SELECT
+            p.product_id,
+            p.name,
+            p.description,
+            p.price,
+            p.stock,
             p.image_url,
             c.category_name,
             c.description AS category_description
@@ -52,10 +52,10 @@ class ProductsController
         WHERE p.product_id = ?
     ", [$id])->find();
         $relatedProducts = $this->db->query("
-        SELECT 
-            product_id, 
-            name, 
-            price, 
+        SELECT
+            product_id,
+            name,
+            price,
             image_url
         FROM products
         WHERE category_id = ? AND product_id != ?

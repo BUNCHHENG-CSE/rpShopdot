@@ -41,20 +41,27 @@ class Router
     }
     public function route($uri, $method)
     {
+        $matches = [];
+        $dynamicRoute = preg_match('/^\/product\/(\d+)$/', $uri, $matches);
         foreach ($this->routes as $route) {
-            if ($route['uri'] === $uri && $route['method'] === strtoupper($method)) {
+            if (($route['uri'] === $uri ||
+                    ($dynamicRoute && $route['uri'] === '/product/{id}')) &&
+                $route['method'] === strtoupper($method)
+            ) {
                 Middleware::resolve($route['middleware']);
+                if ($dynamicRoute) {
+                    $_GET['id'] = $matches[1];
+                }
                 return require base_path('Http/controller/' . $route['controller']);
             }
         }
+
         $this->abort();
     }
     public function previousUrl()
     {
         return $_SERVER['HTTP_REFERER'];
     }
-
-
     public function only($key)
     {
         $this->routes[array_key_last($this->routes)]['middleware'] = $key;
