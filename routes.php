@@ -1,6 +1,6 @@
 <?php
 
-// Client Interface
+/**** Client Interface */
 
 $router->get('/', 'client/index.php');
 $router->get('/about', 'client/about.php');
@@ -10,19 +10,24 @@ $router->get('/products', 'client/products/index.php');
 $router->get('/cart', 'client/cart/index.php');
 
 
-// Admin Interface
+/**** Admin Interface */
 
 $router->get('/dashboard', 'dashboard/index.php');
 $router->get('/table', 'dashboard/table.php');
 $router->get('/billing', 'dashboard/billing.php');
 $router->get('/profile', 'dashboard/profile.php');
-// $router->get('/tbproducts', 'dashboard/products/index.php');
-$router->get('/tbcategories', 'dashboard/categories/index.php');
+
+
 $router->get('/tbusers', 'dashboard/users/index.php');
 $router->get('/tborders', 'dashboard/orders/index.php');
-//product
+//product dashboard
 $router->get('/tbproducts', 'dashboard/products/index.php');
-$router->post('/tbproducts', 'dashboard/products/index.php');
 $router->post('/tbproducts', 'dashboard/products/index.php');
 $router->post('/tbproducts/update', 'dashboard/products/index.php');
 $router->post('/tbproducts/delete', 'dashboard/products/index.php');
+
+//category dashboard
+$router->get('/tbcategories', 'dashboard/categories/index.php');
+$router->post('/tbcategories', 'dashboard/categories/index.php');
+$router->post('/tbcategories/update', 'dashboard/categories/index.php');
+$router->post('/tbcategories/delete', 'dashboard/categories/index.php');

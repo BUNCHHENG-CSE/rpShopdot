@@ -18703,6 +18703,15 @@ fieldset:disabled .btn {
   transform: scale(1.2);
 }
 
+.avatar-xxxl {
+    width: 150px !important;
+    height: 150px !important;
+}
+
+.avatar-xxxl.avatar-raised {
+    margin-top: -75px;
+}
+
 .avatar-xxl {
   width: 110px !important;
   height: 110px !important;

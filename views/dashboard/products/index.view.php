@@ -89,7 +89,7 @@
                                                 <td>
                                                     <img src="<?= $product['image_url'] ?? 'asset/images/default-product.jpg' ?>"
                                                         alt="<?= $product['name'] ?>"
-                                                        style="max-width: 100px; max-height: 100px;">
+                                                        class="avatar avatar-xxl me-3">
                                                 </td>
                                                 <td><?= $product['name'] ?></td>
                                                 <td>$<?= number_format($product['price'], 2) ?></td>
@@ -100,6 +100,8 @@
                                                         <button type="button" class="btn btn-link text-dark px-3 mb-0"
                                                             data-bs-toggle="modal"
                                                             data-bs-target="#updateProductModal<?= $product['product_id'] ?>">
+                                                            <i
+                                                                class="fas fa-pencil-alt text-dark me-2 text-md" aria-hidden="true"></i>
                                                             Edit
                                                         </button>
                                                         <div class="modal fade" id="updateProductModal<?= $product['product_id'] ?>" tabindex="-1" aria-hidden="true">
@@ -143,6 +145,8 @@
                                                                                 <input type="file" class="form-control" name="product-image" accept="image/*">
                                                                                 <?php if (!empty($product['image_url'])): ?>
                                                                                     <small class="text-muted">Current image will be replaced if a new image is uploaded.</small>
+                                                                                    <br />
+                                                                                    <img src="<?= $product['image_url'] ?>" class="avatar avatar-xxxl " alt="<?= $product['name'] ?>">
                                                                                 <?php endif; ?>
                                                                             </div>
                                                                             <div class="mb-3">
@@ -163,6 +167,7 @@
                                                             onsubmit="return confirm('Are you sure you want to delete this product?');">
                                                             <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
                                                             <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
+                                                                <i class="far fa-trash-alt me-2 text-md"></i>
                                                                 Delete
                                                             </button>
                                                         </form>

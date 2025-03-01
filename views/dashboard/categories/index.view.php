@@ -22,11 +22,11 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="categoryModelLabel">New Catgory</h1>
+                                    <h1 class="modal-title fs-5" id="categoryModelLabel">New Category</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    <form action="" method="POST">
+                                    <form action="/tbcategories" method="POST" enctype="multipart/form-data">
                                         <div class="mb-3">
                                             <input type="text" class="form-control" id="category-name" name="category-name" placeholder="Category Name">
                                         </div>
@@ -60,27 +60,67 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-lg">MR-G</h6>
+                                        <?php foreach ($categories as $category): ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-lg"><?= $category['category_name'] ?></h6>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td class="align-middle text-center">
-                                                <p class="text-md font-weight-bold mb-0 text-truncate" style="max-width: 250px;">A premium, full-metal G-SHOCK MR-G timepiece for diving — the titanium armor-clad, airtight MRG-BF1000 with ISO 200-meter water resistance — joins the FROGMAN family of full-fledged diver’s watches. A G-SHOCK diving watch carries the reliability of the G-SHOCK name to the depths, providing you with peace of mind that you have the best titanium diving watch.</p>
-                                            </td>
-                                            <td class="align-middle">
-                                                <div class="ms-auto text-end">
-                                                    <a class="btn btn-link text-dark px-3 mb-0" href="javascript:;"><i
-                                                            class="fas fa-pencil-alt text-dark me-2 text-md" aria-hidden="true"></i>Edit</a>
-                                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                        href="javascript:;"><i class="far fa-trash-alt me-2 text-md"></i>Delete</a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                                </td>
+                                                <td class="align-middle text-center">
+                                                    <p class="text-md font-weight-bold mb-0 text-truncate" style="max-width: 250px;"><?= $category['description'] ?></p>
+                                                </td>
+                                                <td>
+                                                    <div class="ms-9 text-end ">
+                                                        <button type="button" class="btn btn-link text-dark px-3 mb-0"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#updateCategoriesModal<?= $category['category_id'] ?>">
+                                                            <i
+                                                                class="fas fa-pencil-alt text-dark me-2 text-md" aria-hidden="true"></i>
+                                                            Edit
+                                                        </button>
+                                                        <div class="modal fade" id="updateCategoriesModal<?= $category['category_id'] ?>" tabindex="-1" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h1 class="modal-title fs-5">Update Category</h1>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form action="/tbcategories/update" method="POST" enctype="multipart/form-data">
+                                                                        <input type="hidden" name="category_id" value="<?= $category['category_id'] ?>">
+                                                                        <div class="modal-body">
+                                                                            <div class="mb-3">
+                                                                                <input type="text" class="form-control" name="categories-name-update"
+                                                                                    value="<?= htmlspecialchars($category['category_name']) ?>" required>
+                                                                            </div>
+                                                                            <div class="mb-3">
 
+                                                                                <textarea class="form-control" name="categories-decription-update"
+                                                                                    rows="3"><?= htmlspecialchars($category['description'] ?? '') ?></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-primary">Update Category</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <form action="/tbcategories/delete" method="POST"
+                                                            onsubmit="return confirm('Are you sure you want to delete this category?');" style="float: right;">
+                                                            <input type="hidden" name="category_id" value="<?= $category['category_id'] ?>">
+                                                            <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
+                                                                <i class="far fa-trash-alt me-2 text-md"></i>
+                                                                Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
