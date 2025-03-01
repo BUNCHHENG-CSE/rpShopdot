@@ -1,4 +1,5 @@
 <?php
 
-view('dashboard/products/index.view.php'
+view(
+    'client/products/index.view.php'
 );

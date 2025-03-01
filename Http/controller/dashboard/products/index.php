@@ -27,10 +27,12 @@ class ProductController
             LEFT JOIN categories c ON p.category_id = c.category_id
         ")->get();
 
+        $categories = $this->db->query("SELECT * FROM categories")->get();
+
         view('dashboard/products/index.view.php', [
             'heading' => 'Products',
             'products' => $products,
-            'categories' => $this->db->query("SELECT * FROM categories")->get()
+            'categories' => $categories
         ]);
     }
 
@@ -69,7 +71,7 @@ class ProductController
             INSERT INTO products (name, description, price, stock, category_id, image_url)
             VALUES (?, ?, ?, ?, ?, ?)", [
             $request['product-name'],
-            $request['product-decription'],
+            $request['product-decription'] ?? '',
             $request['product-price'],
             $request['product-stock'],
             $request['product-category'],
@@ -79,15 +81,23 @@ class ProductController
         redirect('/tbproducts');
     }
 
-    public function update($id, $request)
+    public function update($request)
     {
-        $product = $this->db->query("SELECT * FROM products WHERE product_id = ?", [$id])->findOrFail();
-        dd($product);
-        die();
         $errors = [];
+        $id = $request['product_id'];
 
-        if (!Validator::string($request['product-name'], 2, 255)) {
-            $errors['product-name'] = 'Product name must be between 2 and 255 characters.';
+        $product = $this->db->query("SELECT * FROM products WHERE product_id = ?", [$id])->findOrFail();
+
+        if (!Validator::string($request['product-name-update'], 2, 255)) {
+            $errors['product-name-update'] = 'Product name must be between 2 and 255 characters.';
+        }
+
+        if (!Validator::greaterThan((int)$request['product-stock-update'], -1)) {
+            $errors['product-stock-update'] = 'Stock must be a non-negative number.';
+        }
+
+        if (!Validator::greaterThan((float)$request['product-price-update'], 0)) {
+            $errors['product-price-update'] = 'Price must be greater than zero.';
         }
 
         $imageUrl = $product['image_url'];
@@ -115,7 +125,7 @@ class ProductController
                 image_url = ?
             WHERE product_id = ?", [
             $request['product-name-update'],
-            $request['product-decription-update'],
+            $request['product-decription-update'] ?? '',
             $request['product-price-update'],
             $request['product-stock-update'],
             $request['product-category-update'],
@@ -126,17 +136,20 @@ class ProductController
         redirect('/tbproducts');
     }
 
-    public function destroy($id)
+    public function destroy($request)
     {
+        $id = $request['product_id'];
+
+        // Find the product first to ensure it exists
         $product = $this->db->query("SELECT * FROM products WHERE product_id = ?", [$id])->findOrFail();
 
+        // Delete the product
         $this->db->query("DELETE FROM products WHERE product_id = ?", [$id]);
 
         redirect('/tbproducts');
     }
 }
 
-// $container = new \Core\Container();
 $db = App::resolve(Database::class);
 $imageUploadService = new \Core\Services\ImageUploadService();
 $controller = new ProductController($db, $imageUploadService);
@@ -147,10 +160,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($uri === '/tbproducts' && $method === 'GET') {
     $controller->index();
 } elseif ($uri === '/tbproducts' && $method === 'POST') {
-    $controller->store($_POST);
-} elseif (preg_match('/^\/tbproducts\/(\d+)$/', $uri, $matches) && $method === 'POST') {
-    $controller->update($_POST['id'], $_POST);
-} elseif (preg_match('/^\/tbproducts\/(\d+)\/delete$/', $uri, $matches) && $method === 'POST') {
-    $controller->destroy($matches[1]);
-    redirect('/tbproducts');
+    if (!isset($_POST['product_id'])) {
+        $controller->store($_POST);
+    }
+} elseif ($uri === '/tbproducts/update' && $method === 'POST') {
+    $controller->update($_POST);
+} elseif ($uri === '/tbproducts/delete' && $method === 'POST') {
+    $controller->destroy($_POST);
 }

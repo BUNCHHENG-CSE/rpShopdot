@@ -23,5 +23,6 @@ $router->get('/tborders', 'dashboard/orders/index.php');
 //product
 $router->get('/tbproducts', 'dashboard/products/index.php');
 $router->post('/tbproducts', 'dashboard/products/index.php');
-$router->post('/tbproducts/{id}', 'dashboard/products/index.php');
-$router->post('/tbproducts/{id}/delete', 'dashboard/products/index.php');
+$router->post('/tbproducts', 'dashboard/products/index.php');
+$router->post('/tbproducts/update', 'dashboard/products/index.php');
+$router->post('/tbproducts/delete', 'dashboard/products/index.php');
