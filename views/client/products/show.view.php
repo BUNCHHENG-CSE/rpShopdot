@@ -2,6 +2,7 @@
 <?php require base_path('views/client/partials/nav.php') ?>
 
 <section class="hero" id="hero">
+<<<<<<< HEAD
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -11,6 +12,15 @@
                         <div class="carousel-content-container">
                             <h2>Products</h2>
                         </div>
+=======
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="carousel-background">
+                <img src="/../asset/images/slider7.png" alt="" style="object-fit: cover;">
+                <div class="carousel-container">
+                    <div class="carousel-content-container">
+                        <h2>Product Details</h2>
+>>>>>>> f5b0cc83b3698c05ab76433145b9270a83f0e411
                     </div>
 
 

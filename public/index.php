@@ -10,7 +10,15 @@ session_start();
 require BASE_PATH . 'Core/function.php';
 require base_path("bootstrap.php");
 
+$requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$staticFileExtensions = ['jpg', 'jpeg', 'png', 'gif', 'css', 'js', 'svg', 'webp'];
+$fileExtension = pathinfo($requestUri, PATHINFO_EXTENSION);
 
+
+if (in_array($fileExtension, $staticFileExtensions)) {
+
+    return false;
+}
 $router = new Core\Router();
 
 $routes = require base_path('routes.php');
