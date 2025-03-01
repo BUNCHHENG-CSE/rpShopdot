@@ -34,19 +34,47 @@ class ProductsController
             'categories' => $categories
         ]);
     }
-    public function show($request)
+    public function showOneProduct($request)
     {
-        $id = $request['product_id'];
-
+        $id = $request['product_id'] ?? null;
         $product = $this->db->query("
-            SELECT p.*, c.category_name
-            FROM products p
-            LEFT JOIN categories c ON p.category_id = c.category_id
-            WHERE product_id = ?
-        ", [$id])->findOrFail();
-
-        view('dashboard/products/show.view.php', [
-            'product' => $product
+        SELECT 
+            p.product_id, 
+            p.name, 
+            p.description, 
+            p.price, 
+            p.stock, 
+            p.image_url,
+            c.category_name,
+            c.description AS category_description
+        FROM products p
+        LEFT JOIN categories c ON p.category_id = c.category_id
+        WHERE p.product_id = ?
+    ", [$id])->find();
+        $relatedProducts = $this->db->query("
+        SELECT 
+            product_id, 
+            name, 
+            price, 
+            image_url
+        FROM products
+        WHERE category_id = ? AND product_id != ?
+        LIMIT 4
+    ", [$product['category_id'], $id])->get();
+        view('client/products/show.view.php', [
+            'product' => $product,
+            'relatedProducts' => $relatedProducts
+        ]);
+    }
+    public function filterproduct($page)
+    {
+        $products = $this->db->query("
+            SELECT * FROM products
+            WHERE stock >19 AND stock <40
+    ")->get();
+        view($page . '/index.view.php', [
+            'heading' => 'Products',
+            'products' => $products,
         ]);
     }
 
@@ -149,7 +177,6 @@ class ProductsController
 
         redirect('/tbproducts');
     }
-
     public function destroy($request)
     {
         $id = $request['product_id'];

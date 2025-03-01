@@ -1,12 +1,12 @@
-<?php  include 'partials/head.php' ?>
-<?php  include 'partials/nav.php' ?>
+<?php include 'partials/head.php' ?>
+<?php include 'partials/nav.php' ?>
 
 <section class="hero" id="hero">
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="carousel-background">
-                    <img src="asset/images/MRGB2000JS1A.png" alt="" style="object-fit: contain;">
+                    <img src="asset/images/slider1.png" alt="" style="object-fit: cover;">
                     <div class="carousel-container">
                         <div class="carousel-content-container">
                             <p style="color: gray; font-size: 20px; text-align: left; padding-left: 10rem;">$800</p>
@@ -21,40 +21,7 @@
                     </div>
                 </div>
             </div>
-            <div class="carousel-item ">
-                <div class="carousel-background">
-                    <img src="asset/images/img_bg_2.png" alt="" style="object-fit: contain;">
-                    <div class="carousel-container">
-                        <div class="carousel-content-container">
-                            <p style="color: gray; font-size: 20px; text-align: left; padding-left: 10rem;">$530</p>
-                            <h2>The Haluz Rocking Chair</h2>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-                            <div class="buttons">
-                                <a href="products.html" class="button1">Explore Products</a>
-                            </div>
-                        </div>
-                    </div>
 
-                </div>
-            </div>
-            <div class="carousel-item ">
-                <div class="carousel-background">
-                    <img src="asset/images/img_bg_3.png" alt="" style="object-fit: contain;">
-                    <div class="carousel-container">
-                        <div class="carousel-content-container">
-                            <p style="color: gray; font-size: 20px; text-align: left; padding-left: 10rem;">$780</p>
-                            <h2>Ligomancer</h2>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.</p>
-                            <div class="buttons">
-                                <a href="products.html" class="button1">Explore Products</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
 
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -121,50 +88,20 @@
                 dolor eius.</p>
         </div>
         <div class="row mt-5">
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="./images/product-1.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Hauteville Concrete Rocking Chair</h3>
-                    <p>$350</p>
-                    <div class="buttons"><a href="./pages/product1.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="./images/product-2.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Pavilion Speaker</h3>
-                    <p>$600</p>
-                    <div class="buttons"><a href="./pages/product2.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
+            <?php foreach ($products as $product) : ?>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="single-courses-box ">
+                        <div class="icon">
+                            <img src="<?= $product['image_url'] ?>" class="img-fluid product-grid" alt="">
+                        </div>
+                        <h3><?= $product['name'] ?></h3>
+                        <p><?= $product['price'] ?></p>
+                        <div class="buttons"><a href="./pages/product1.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="./images/product-3.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Ligomancer</h3>
-                    <p>$780</p>
-                    <div class="buttons"><a href="./pages/product3.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="./images/product-4.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Alato Cabinet</h3>
-                    <p>$800</p>
-                    <div class="buttons"><a href="./pages/product4.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach ?>
+
         </div>
     </div>
 </section>
@@ -199,4 +136,4 @@
 
 </section>
 
-<?php  include 'partials/footer.php' ?>
+<?php include 'partials/footer.php' ?>

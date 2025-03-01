@@ -6,7 +6,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="carousel-background">
-                    <img src="asset/images/img_bg_2.jpg" alt="" style="object-fit: cover;">
+                    <img src="asset/images/slider2.png" alt="" style="object-fit: cover;">
                     <div class="carousel-container">
                         <div class="carousel-content-container">
                             <h2>Products</h2>
@@ -18,16 +18,7 @@
             </div>
 
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+
     </div>
 </section>
 
@@ -41,17 +32,19 @@
         <div class="row mt-5">
             <?php foreach ($products as $product) : ?>
                 <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="<?= $product['image_url'] ?>" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3><?= $product['name'] ?></h3>
-                    <p><?= $product['price'] ?></p>
-                    <div class="buttons">
-                        <a href="/product/1" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
+                    <div class="single-courses-box ">
+                        <div class="icon">
+                            <img src="<?= $product['image_url'] ?>" class="img-fluid product-grid" alt="">
+                        </div>
+                        <h3><?= $product['name'] ?></h3>
+                        <p><?= $product['price'] ?></p>
+                        <div class="buttons">
+                            <a href="/product/<?= $product['product_id'] ?>" class="button3">
+                                Read More <i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php endforeach ?>
 
         </div>
