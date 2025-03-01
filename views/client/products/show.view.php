@@ -5,7 +5,7 @@
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="carousel-background">
-                <img src="asset/images/img_bg_2.jpg" alt="" style="object-fit: cover;">
+                <img src="/../asset/images/slider7.png" alt="" style="object-fit: cover;">
                 <div class="carousel-container">
                     <div class="carousel-content-container">
                         <h2>Product Details</h2>
