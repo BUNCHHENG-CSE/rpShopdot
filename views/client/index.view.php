@@ -6,7 +6,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="carousel-background">
-                    <img src="asset/images/img_bg_1.png" alt="" style="object-fit: contain;">
+                    <img src="asset/images/MRGB2000JS1A.png" alt="" style="object-fit: contain;">
                     <div class="carousel-container">
                         <div class="carousel-content-container">
                             <p style="color: gray; font-size: 20px; text-align: left; padding-left: 10rem;">$800</p>
@@ -15,7 +15,7 @@
                                 Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.
                             </p>
                             <div class="buttons">
-                                <a href="products.html" class="button1">Explore Products</a>
+                                <a href="/products" class="button1">Explore Products</a>
                             </div>
                         </div>
                     </div>

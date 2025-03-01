@@ -7,19 +7,18 @@ $router->get('/about', 'client/about.php');
 $router->get('/contact', 'client/contact.php');
 
 $router->get('/products', 'client/products/index.php');
+$router->get('/product/{id}', 'client/products/show.php');
 $router->get('/cart', 'client/cart/index.php');
+$router->get('/profile', 'client/profile/index.php');
 
-
+// user regisration
+$router->post('/register', 'client/registration/index.php');
+$router->post('/login', 'client/login/index.php');
+$router->post('/logout', 'client/login/destroy.php');
 /**** Admin Interface */
 
-$router->get('/dashboard', 'dashboard/index.php');
-$router->get('/table', 'dashboard/table.php');
-$router->get('/billing', 'dashboard/billing.php');
-$router->get('/profile', 'dashboard/profile.php');
+$router->get('/dashboard', 'dashboard/index.php')->only('superuser');
 
-
-$router->get('/tbusers', 'dashboard/users/index.php');
-$router->get('/tborders', 'dashboard/orders/index.php');
 //product dashboard
 $router->get('/tbproducts', 'dashboard/products/index.php');
 $router->post('/tbproducts', 'dashboard/products/index.php');
@@ -31,3 +30,15 @@ $router->get('/tbcategories', 'dashboard/categories/index.php');
 $router->post('/tbcategories', 'dashboard/categories/index.php');
 $router->post('/tbcategories/update', 'dashboard/categories/index.php');
 $router->post('/tbcategories/delete', 'dashboard/categories/index.php');
+
+// order dashboard
+$router->get('/tborders', 'dashboard/orders/index.php');
+$router->post('/tborders', 'dashboard/orders/index.php');
+$router->post('/tborders/update', 'dashboard/orders/index.php');
+$router->post('/tborders/delete', 'dashboard/orders/index.php');
+
+// user dashboard
+
+$router->get('/tbusers', 'dashboard/users/index.php');
+$router->post('/tbusers/update', 'dashboard/users/index.php');
+$router->post('/tbusers/delete', 'dashboard/users/index.php');

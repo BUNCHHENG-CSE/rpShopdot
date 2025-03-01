@@ -27,14 +27,14 @@
                         <a class="nav-link cart <?= urlIs('/cart') ?  "active" : "" ?>" aria-current="page" href="/cart"> <span><small id="productamount">0</small><i
                                     class="bi bi-cart-fill" style="font-size: 19px;"></i></span></a>
                     </li>
-                    <li class="nav-item">
-                        <button  type="button" class="btn nav-link btnLogin" data-bs-toggle="modal" data-bs-target="#loginModel" data-bs-whatever="@mdo"><i
+                    <!-- <li class="nav-item">
+                        <button type="button" class="btn nav-link btnLogin" data-bs-toggle="modal" data-bs-target="#loginModel" data-bs-whatever="@mdo"><i
                                 class="fas fa-plus"></i>&nbsp;&nbsp;Login</button>
                         <div class="modal fade" id="loginModel" tabindex="-1" aria-labelledby="loginModelLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="loginModelLabel" >Login</h1>
+                                        <h1 class="modal-title fs-5" id="loginModelLabel">Login</h1>
                                         <button type="button" class="btn-close btnFormClose" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
@@ -54,10 +54,169 @@
                                 </div>
                             </div>
                         </div>
+
+                    </li> -->
+                    <li class="nav-item ">
+
+                        <?php if ($_SESSION['user'] ?? false) : ?>
+
+                            <a style="padding: 0 1rem;" aria-current="page" href="/profile"> <span>
+                                    <img src="<?= $_SESSION['user']['image_path'] ?> " class=" avatar rounded-circle avatar-sm " />
+                            </a>
+                        <?php else : ?>
+                            <button
+                                type="button"
+                                class="btn nav-link btnLogin"
+                                data-bs-toggle="modal"
+                                data-bs-target="#authModal">
+                                Login / Register
+                            </button>
+                            <div
+                                class="modal fade"
+                                id="authModal"
+                                tabindex="-1"
+                                aria-labelledby="authModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <!-- Modal Header with Nav Tabs -->
+                                        <div class="modal-header">
+                                            <ul class="nav nav-tabs w-100" id="authTab" role="tablist">
+
+                                                <li class="nav-item " role="presentation">
+                                                    <button
+                                                        class="nav-link active"
+                                                        id="login-tab"
+                                                        data-bs-toggle="tab"
+                                                        data-bs-target="#login"
+                                                        type="button"
+                                                        role="tab"
+                                                        aria-controls="login"
+                                                        aria-selected="true">
+                                                        Login
+                                                    </button>
+                                                </li>
+                                                <li class="nav-item " role="presentation">
+                                                    <button
+                                                        class="nav-link"
+                                                        id="signup-tab"
+                                                        data-bs-toggle="tab"
+                                                        data-bs-target="#signup"
+                                                        type="button"
+                                                        role="tab"
+                                                        aria-controls="signup"
+                                                        aria-selected="false">
+                                                        Register
+                                                    </button>
+                                                </li>
+
+                                            </ul>
+                                            <button
+                                                type="button "
+                                                class="btn-close btnFormClose"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+
+                                        <!-- Modal Body with Tab Content -->
+                                        <div class="modal-body">
+                                            <div class="tab-content" id="authTabContent">
+                                                <!-- Login Form -->
+                                                <div
+                                                    class="tab-pane fade show active"
+                                                    id="login"
+                                                    role="tabpanel"
+                                                    aria-labelledby="login-tab">
+                                                    <form action="/login" method="POST">
+                                                        <div class="mb-3">
+                                                            <label for="loginEmail" class="form-label">Email address</label>
+                                                            <input
+                                                                type="email"
+                                                                class="form-control"
+                                                                id="loginEmail"
+                                                                placeholder="Enter your email"
+                                                                name="email-login" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="loginPassword" class="form-label">Password</label>
+                                                            <input
+                                                                type="password"
+                                                                class="form-control"
+                                                                id="loginPassword"
+                                                                placeholder="Enter your password"
+                                                                name="password-login" />
+                                                        </div>
+                                                        <div class="d-grid">
+                                                            <button type="submit" class="btn btn-primary">
+                                                                Sign In
+                                                            </button>
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <small>forgot password ? </small>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- Sign Up Form -->
+                                                <div
+                                                    class="tab-pane fade"
+                                                    id="signup"
+                                                    role="tabpanel"
+                                                    aria-labelledby="signup-tab">
+                                                    <form action="/register" method="POST">
+                                                        <div class="mb-3">
+                                                            <label for="signupName" class="form-label">Full Name</label>
+                                                            <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                id="signupName"
+                                                                placeholder="Enter your full name"
+                                                                name="user-name" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="signupEmail" class="form-label">Email address</label>
+                                                            <input
+                                                                type="email"
+                                                                class="form-control"
+                                                                id="signupEmail"
+                                                                placeholder="Enter your email"
+                                                                name="user-email" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="signupPassword" class="form-label">Password</label>
+                                                            <input
+                                                                type="password"
+                                                                class="form-control"
+                                                                id="signupPassword"
+                                                                placeholder="Create a password"
+                                                                name="user-password" />
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="signupConfirmPassword" class="form-label">Confirm Password</label>
+                                                            <input
+                                                                type="password"
+                                                                class="form-control"
+                                                                id="signupConfirmPassword"
+                                                                placeholder="Confirm your password"
+                                                                name="user-password-confirm" />
+                                                        </div>
+                                                        <div class="d-grid">
+                                                            <button type="submit" class="btn btn-primary">
+                                                                Register
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <small>By continuing, you agree to our <a href="#">Terms</a> and
+                                                <a href="#">Privacy Policy</a>.</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endif ?>
                     </li>
-                    <!-- <li class="nav-item">
-                            <button class="nav-link" style="border: none;">Logout</button>
-                        </li> -->
                 </ul>
 
             </div>

@@ -55,7 +55,7 @@ header .nav-item .dropdown-menu .dropdown-item {
 }
 
 header .nav-item .dropdown-menu .dropdown-item:hover {
-    background-color: #f06804;
+    background-color: #000;
 }
 
 .navbar {
@@ -72,7 +72,6 @@ header .nav-item .dropdown-menu .dropdown-item:hover {
 .navbar-toggler {
     outline: none !important;
     border: none !important;
-    color: var(--warning) !important;
     box-shadow: none !important;
     border-radius: none !important;
 }
@@ -252,7 +251,7 @@ li a.cart span small {
     }
 
     #navbarSupportedContent {
-        background-color: #040f28;
+        background-color: #e0e7f7;
         opacity: 0.9;
     }
 }
@@ -263,7 +262,7 @@ li a.cart span small {
     }
 
     #navbarSupportedContent {
-        background-color: #040f28;
+        background-color: #e0e7f7;
         opacity: 0.9;
     }
 }
@@ -602,7 +601,6 @@ li a.cart span small {
 .btnLogin:active {
     outline: none !important;
     box-shadow: none !important;
-
 }
 .btnLogin {
     outline: none;
@@ -615,5 +613,82 @@ li a.cart span small {
 .btnFormClose:active {
     outline: none !important;
     box-shadow: none !important;
+}
 
+.modal-content {
+    border-radius: 15px;
+    overflow: hidden;
+    border: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.modal-header {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: #fff;
+    border-bottom: none;
+    text-align: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    position: relative;
+}
+.modal-header .btn-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    filter: invert(1);
+}
+.nav-tabs {
+    border-bottom: none;
+}
+.nav-tabs .nav-link {
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    width: 50%;
+    padding: 0.75rem;
+}
+.nav-tabs .nav-link.active {
+    background-color: inherit;
+
+    color: white;
+    /* border-radius: 15px 15px 0 0; */
+    margin-bottom: -2px;
+}
+.modal-body {
+    padding: 2rem;
+    background: #f7f7f7;
+}
+.form-control {
+    border-radius: 10px;
+    box-shadow: none;
+}
+.form-label {
+    font-weight: 500;
+}
+.btn-primary {
+    background: linear-gradient(135deg, #2575fc, #6a11cb);
+    border: none;
+    border-radius: 10px;
+    padding: 0.6rem 1.2rem;
+}
+.btn-primary:hover {
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+}
+.modal-footer {
+    border-top: none;
+    justify-content: center;
+    padding-bottom: 1.5rem;
+}
+#login-tab.active,
+#signup-tab.active {
+    color: #fff;
+}
+
+.rounded-circle,
+.avatar.rounded-circle img {
+    border-radius: 50% !important;
+}
+.avatar-sm {
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 0.875rem;
 }

@@ -39,105 +39,21 @@
             <p class="text-center" style="font-size: 1.1rem; color: #828282;letter-spacing: 3px;">Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
         </div>
         <div class="row mt-5">
-            <div class="col-lg-4 col-md-6 col-sm-12">
+            <?php foreach ($products as $product) : ?>
+                <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="single-courses-box ">
                     <div class="icon">
-                        <img src="asset/images/product-1.jpg" class="img-fluid product-grid" alt="">
+                        <img src="<?= $product['image_url'] ?>" class="img-fluid product-grid" alt="">
                     </div>
-                    <h3>Hauteville Concrete Rocking Chair</h3>
-                    <p>$350</p>
-                    <div class="buttons"><a href="./pages/product1.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
+                    <h3><?= $product['name'] ?></h3>
+                    <p><?= $product['price'] ?></p>
+                    <div class="buttons">
+                        <a href="/product/1" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="asset/images/product-2.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Pavilion Speaker</h3>
-                    <p>$600</p>
-                    <div class="buttons"><a href="./pages/product2.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="asset/images/product-3.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Ligomancer</h3>
-                    <p>$780</p>
-                    <div class="buttons"><a href="./pages/product3.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="asset/images/product-4.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Alato Cabinet</h3>
-                    <p>$800</p>
-                    <div class="buttons"><a href="./pages/product4.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="asset/images/product-5.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Earing Wireless</h3>
-                    <p>$100</p>
-                    <div class="buttons"><a href="./pages/product5.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="asset/images/product-6.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Sculptural Coffee Table</h3>
-                    <p>$960</p>
-                    <div class="buttons"><a href="./pages/product6.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="asset/images/product-7.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>The WW Chair</h3>
-                    <p>$540</p>
-                    <div class="buttons"><a href="./pages/product7.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="asset/images/product-8.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Himitsu Money Box</h3>
-                    <p>$55</p>
-                    <div class="buttons"><a href="./pages/product8.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-12">
-                <div class="single-courses-box ">
-                    <div class="icon">
-                        <img src="asset/images/product-9.jpg" class="img-fluid product-grid" alt="">
-                    </div>
-                    <h3>Ariane Prin</h3>
-                    <p>$99</p>
-                    <div class="buttons"><a href="./pages/product9.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach ?>
+
         </div>
     </div>
 </section>

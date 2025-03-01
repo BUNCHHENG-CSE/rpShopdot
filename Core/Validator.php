@@ -10,6 +10,12 @@ class Validator
 
         return strlen($value) >= $min && strlen($value) <= $max;
     }
+    public static function passwordlength($value, $min = 8, $max = INF)
+    {
+        $value = trim($value);
+
+        return strlen($value) >= $min && strlen($value) <= $max;
+    }
     public static function email(string $value): bool
     {
         return filter_var($value, FILTER_VALIDATE_EMAIL);
@@ -18,5 +24,9 @@ class Validator
     public static function greaterThan(int $value, int $greaterThan): bool
     {
         return $value > $greaterThan;
+    }
+    public static function conformPassword(string $password1, string $password2): bool
+    {
+        return $password1 === $password2;
     }
 }

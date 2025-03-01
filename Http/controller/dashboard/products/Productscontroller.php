@@ -18,7 +18,7 @@ class ProductsController
         $this->imageUploadService = $imageUploadService;
     }
 
-    public function index()
+    public function index($page = "dashboard")
     {
         $products = $this->db->query("
             SELECT p.*, c.category_name
@@ -28,10 +28,25 @@ class ProductsController
 
         $categories = $this->db->query("SELECT * FROM categories")->get();
 
-        view('dashboard/products/index.view.php', [
+        view($page . '/products/index.view.php', [
             'heading' => 'Products',
             'products' => $products,
             'categories' => $categories
+        ]);
+    }
+    public function show($request)
+    {
+        $id = $request['product_id'];
+
+        $product = $this->db->query("
+            SELECT p.*, c.category_name
+            FROM products p
+            LEFT JOIN categories c ON p.category_id = c.category_id
+            WHERE product_id = ?
+        ", [$id])->findOrFail();
+
+        view('dashboard/products/show.view.php', [
+            'product' => $product
         ]);
     }
 

@@ -9,11 +9,17 @@ class ValidationException extends \Exception
 
     public static function throw($errors, $old)
     {
-       $instance = new static('The form failed to validate.');
+        $instance = new static('The form failed to validate.');
 
-       $instance->errors = $errors;
-       $instance->old = $old;
+        $instance->errors = $errors;
+        $instance->old = $old;
 
-       throw $instance;
+        throw $instance;
+    }
+    public static function error($field, $message)
+    {
+        $instance = new static('The form failed to validate.');
+        $instance->errors = [$field => $message];
+        return $instance;
     }
 }
