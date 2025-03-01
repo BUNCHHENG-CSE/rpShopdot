@@ -19,7 +19,6 @@
                     <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#productModel">
                         <i class="fas fa-plus"></i>&nbsp;&nbsp;Create New Product
                     </button>
-
                     <!-- Product Creation Modal -->
                     <div class="modal fade" id="productModel" tabindex="-1" aria-labelledby="productModelLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -98,13 +97,64 @@
                                                 <td><?= $product['stock'] ?></td>
                                                 <td><?= $product['category_name'] ?? 'Uncategorized' ?></td>
                                                 <td>
-                                                    <form action="/tbproducts/<?= $product['product_id'] ?>" method="POST">
-                                                        <button type="submit" class="btn btn-primary btn-sm">Edit</button>
-                                                    </form>
+                                                    <div style='float: left; '>
+                                                        <!-- <button type="submit" class="btn btn-link text-dark px-3 mb-0" name="edit">Edit</button> -->
+                                                        <button type="button" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target="#productEditModel">
+                                                            Edit
+                                                        </button>
+                                                        <div class="modal fade" id="productEditModel" tabindex="-1" aria-labelledby="productEditModelLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h1 class="modal-title fs-5" id="productEditModelLabel">Update Product</h1>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <form action="/tbproducts" method="POST" enctype="multipart/form-data">
+                                                                        <div class="modal-body">
+                                                                            <div class="mb-3">
+                                                                                <input type="hidden" value="EDIT" name="_method">
+                                                                                <input type="hidden" value="<?= $product['product_id']  ?>" name="id">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <input type="text" class="form-control" name="product-name-update" placeholder="Product Name" required>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <input type="number" class="form-control" name="product-stock-update" placeholder="Product Stock" required>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <input type="number" step="0.01" class="form-control" name="product-price-update" placeholder="Product Price" required>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <select class="form-select" name="product-category-update" required>
+                                                                                    <option selected>Select Category</option>
+                                                                                    <?php foreach ($categories as $category): ?>
+                                                                                        <option value="<?= $category['category_id'] ?>">
+                                                                                            <?= $category['category_name'] ?>
+                                                                                        </option>
+                                                                                    <?php endforeach; ?>
+                                                                                </select>
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <input type="file" class="form-control" name="product-image">
+                                                                            </div>
+                                                                            <div class="mb-3">
+                                                                                <textarea class="form-control" name="product-decription-update" placeholder="Product Description"></textarea>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                                            <button type="submit" class="btn btn-primary">Create</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                     <form action="/tbproducts/<?= $product['product_id'] ?>/delete" method="POST">
-                                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                                                        <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">Delete</button>
                                                     </form>
                                                 </td>
+
                                             </tr>
                                         <?php endforeach; ?>
                                     </tbody>

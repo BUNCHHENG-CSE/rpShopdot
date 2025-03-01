@@ -1,33 +1,37 @@
 <?php
+
 namespace Core;
 
 use Cloudinary\Configuration\Configuration;
 use Dotenv\Dotenv;
 
-class CloudinaryConfig {
+class CloudinaryConfig
+{
     private static $instance = null;
     private $configuration;
 
-    private function __construct() {
+    private function __construct()
+    {
         $dotenv = Dotenv::createImmutable(dirname(dirname(__DIR__)));
         $dotenv->load();
         $this->validateCredentials();
         $this->configuration = new Configuration([
             'cloud' => [
-                'cloud_name' => $_ENV['CLOUDINARY_CLOUD_NAME'],
-                'api_key' => $_ENV['CLOUDINARY_API_KEY'],
-                'api_secret' => $_ENV['CLOUDINARY_API_SECRET']
+                'cloud_name' => 'dhwfvi0qd',
+                'api_key' => '164873255923774',
+                'api_secret' => '6nFdKCexRwD9i5SEpueEr14DMXw',
             ],
             'url' => [
                 'secure' => true
             ]
         ]);
     }
-    private function validateCredentials() {
+    private function validateCredentials()
+    {
         $requiredVars = [
-            'CLOUDINARY_CLOUD_NAME',
-            'CLOUDINARY_API_KEY',
-            'CLOUDINARY_API_SECRET'
+            'dhwfvi0qd',
+            '164873255923774',
+            '6nFdKCexRwD9i5SEpueEr14DMXw',
         ];
 
         foreach ($requiredVars as $var) {
@@ -36,14 +40,16 @@ class CloudinaryConfig {
             }
         }
     }
-    public static function getInstance(): self {
+    public static function getInstance(): self
+    {
         if (self::$instance === null) {
             self::$instance = new self();
         }
         return self::$instance;
     }
 
-    public function getConfiguration() {
+    public function getConfiguration()
+    {
         return $this->configuration;
     }
 }

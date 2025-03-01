@@ -5,16 +5,19 @@ namespace Core\Services;
 use Cloudinary\Cloudinary;
 use Cloudinary\Configuration\Configuration;
 use Cloudinary\Api\Upload\UploadApi;
+use Dotenv\Dotenv;
 
-class ImageUploadService {
+class ImageUploadService
+{
     private $cloudinary;
     private $uploadApi;
 
-    public function __construct() {
+    public function __construct()
+    {
         try {
-            $cloudName = $_ENV['CLOUDINARY_CLOUD_NAME'] ?? '';
-            $apiKey = $_ENV['CLOUDINARY_API_KEY'] ?? '';
-            $apiSecret = $_ENV['CLOUDINARY_API_SECRET'] ?? '';
+            $cloudName = 'dhwfvi0qd' ?? '';
+            $apiKey = '164873255923774' ?? '';
+            $apiSecret = '6nFdKCexRwD9i5SEpueEr14DMXw' ?? '';
 
             $configuration = new Configuration([
                 'cloud' => [
@@ -34,7 +37,8 @@ class ImageUploadService {
         }
     }
 
-    public function validateImageFile($file) {
+    public function validateImageFile($file)
+    {
         if (!isset($file) || $file['error'] !== UPLOAD_ERR_OK) {
             throw new \InvalidArgumentException('No file uploaded or upload error occurred');
         }
@@ -50,7 +54,8 @@ class ImageUploadService {
         }
     }
 
-    public function uploadImage($filePath, $options = []) {
+    public function uploadImage($filePath, $options = [])
+    {
         $defaultOptions = [
             'folder' => 'products',
             'overwrite' => true,

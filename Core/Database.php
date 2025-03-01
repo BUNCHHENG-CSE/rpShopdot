@@ -4,13 +4,14 @@ namespace Core;
 
 use PDO;
 use Core\Response;
+
 class Database
 {
     public $conncetion;
     public $statement;
     public function __construct($config, $username = 'root', $password = '')
     {
-        $dns = 'mysql:' . http_build_query($config, '', ';');
+        $dns = "mysql:host={$config['host']};dbname={$config['database']};charset={$config['charset']}";
         $this->conncetion = new PDO($dns, $username, $password, [
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
         ]);

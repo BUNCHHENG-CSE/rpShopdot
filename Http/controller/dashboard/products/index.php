@@ -29,7 +29,8 @@ class ProductController
 
         view('dashboard/products/index.view.php', [
             'heading' => 'Products',
-            'products' => $products
+            'products' => $products,
+            'categories' => $this->db->query("SELECT * FROM categories")->get()
         ]);
     }
 
@@ -81,7 +82,8 @@ class ProductController
     public function update($id, $request)
     {
         $product = $this->db->query("SELECT * FROM products WHERE product_id = ?", [$id])->findOrFail();
-
+        dd($product);
+        die();
         $errors = [];
 
         if (!Validator::string($request['product-name'], 2, 255)) {
@@ -112,11 +114,11 @@ class ProductController
                 category_id = ?,
                 image_url = ?
             WHERE product_id = ?", [
-            $request['product-name'],
-            $request['product-decription'],
-            $request['product-price'],
-            $request['product-stock'],
-            $request['product-category'],
+            $request['product-name-update'],
+            $request['product-decription-update'],
+            $request['product-price-update'],
+            $request['product-stock-update'],
+            $request['product-category-update'],
             $imageUrl,
             $id
         ]);
@@ -134,7 +136,7 @@ class ProductController
     }
 }
 
-$container = new \Core\Container();
+// $container = new \Core\Container();
 $db = App::resolve(Database::class);
 $imageUploadService = new \Core\Services\ImageUploadService();
 $controller = new ProductController($db, $imageUploadService);
@@ -147,7 +149,8 @@ if ($uri === '/tbproducts' && $method === 'GET') {
 } elseif ($uri === '/tbproducts' && $method === 'POST') {
     $controller->store($_POST);
 } elseif (preg_match('/^\/tbproducts\/(\d+)$/', $uri, $matches) && $method === 'POST') {
-    $controller->update($matches[1], $_POST);
+    $controller->update($_POST['id'], $_POST);
 } elseif (preg_match('/^\/tbproducts\/(\d+)\/delete$/', $uri, $matches) && $method === 'POST') {
     $controller->destroy($matches[1]);
+    redirect('/tbproducts');
 }
