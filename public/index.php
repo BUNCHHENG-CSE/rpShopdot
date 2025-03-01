@@ -2,17 +2,14 @@
 
 // use Core\Session;
 // use Core\ValidationException;
+use Dotenv\Dotenv;
 
 const BASE_PATH = __DIR__ . "/../";
-
-require BASE_PATH . 'vendor/autoload.php';
+require  __DIR__ . '/../vendor/autoload.php';
 session_start();
-
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
 require BASE_PATH . 'Core/function.php';
-
 require base_path("bootstrap.php");
+
 
 $router = new Core\Router();
 

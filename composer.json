@@ -8,9 +8,9 @@
     },
 
     "require": {
-        "vlucas/phpdotenv": "^5.6",
         "illuminate/support": "^12.0",
         "cloudinary/cloudinary_php": "^3.1",
-        "doctrine/dbal": "^4.2"
+        "doctrine/dbal": "^4.2",
+        "vlucas/phpdotenv": "^5.6"
     }
 }
