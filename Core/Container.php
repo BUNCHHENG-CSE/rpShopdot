@@ -5,18 +5,18 @@ namespace Core;
 class Container
 {
     protected $bindings = [];
+
     public function bind($key, $resolver)
     {
         $this->bindings[$key] = $resolver;
     }
+
     public function resolve($key)
     {
-        if (!array_key_exists($key, $this->bindings)) {
-            throw new \Exception("Binding does not exist in container");
+        if (!isset($this->bindings[$key])) {
+            throw new \Exception("Binding '{$key}' does not exist in container");
         }
-        if (array_key_exists($key, $this->bindings)) {
-            $resolver = $this->bindings[$key];
-            return call_user_func($resolver);
-        }
+        $resolver = $this->bindings[$key];
+        return $resolver();
     }
 }

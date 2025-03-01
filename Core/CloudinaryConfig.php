@@ -3,7 +3,7 @@
 namespace Core;
 
 use Cloudinary\Configuration\Configuration;
-use Dotenv\Dotenv;
+
 
 class CloudinaryConfig
 {
@@ -12,14 +12,12 @@ class CloudinaryConfig
 
     private function __construct()
     {
-        $dotenv = Dotenv::createImmutable(dirname(dirname(__DIR__)));
-        $dotenv->load();
         $this->validateCredentials();
         $this->configuration = new Configuration([
             'cloud' => [
-                'cloud_name' => 'dhwfvi0qd',
-                'api_key' => '164873255923774',
-                'api_secret' => '6nFdKCexRwD9i5SEpueEr14DMXw',
+                'cloud_name' => getenv('CLOUDINARY_CLOUD_NAME'),
+                'api_key' =>  getenv('CLOUDINARY_API_KEY'),
+                'api_secret' => getenv('CLOUDINARY_API_SECRET'),
             ],
             'url' => [
                 'secure' => true
@@ -29,9 +27,10 @@ class CloudinaryConfig
     private function validateCredentials()
     {
         $requiredVars = [
-            'dhwfvi0qd',
-            '164873255923774',
-            '6nFdKCexRwD9i5SEpueEr14DMXw',
+            getenv('CLOUDINARY_CLOUD_NAME'),
+            getenv('CLOUDINARY_API_KEY'),
+            getenv('CLOUDINARY_API_SECRET')
+
         ];
 
         foreach ($requiredVars as $var) {

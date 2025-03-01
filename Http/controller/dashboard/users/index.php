@@ -2,10 +2,11 @@
 namespace Http\controller\dashboard\users;
 use Core\App;
 use Core\Database;
+use Core\Services\ImageUploadService;
 
 $db = App::resolve(Database::class);
-$imageUploadService = new \Core\Services\ImageUploadService();
-$controller = new UserController($db, $imageUploadService);
+$cloudinary = App::resolve(ImageUploadService::class);
+$controller = new UserController($db, $cloudinary);
 
 $uri = $_SERVER['REQUEST_URI'];
 $method = $_SERVER['REQUEST_METHOD'];

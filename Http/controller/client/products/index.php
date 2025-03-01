@@ -2,11 +2,11 @@
 
 use Core\App;
 use Core\Database;
+use Core\Services\ImageUploadService;
 use Http\controller\dashboard\products\ProductsController;
-
 $db = App::resolve(Database::class);
-$imageUploadService = new \Core\Services\ImageUploadService();
-$controller = new ProductsController($db, $imageUploadService);
+$cloudinary = App::resolve(ImageUploadService::class);
+$controller = new ProductsController($db, $cloudinary);
 
 
 $uri = $_SERVER['REQUEST_URI'];

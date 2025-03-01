@@ -5,19 +5,18 @@ namespace Core\Services;
 use Cloudinary\Cloudinary;
 use Cloudinary\Configuration\Configuration;
 use Cloudinary\Api\Upload\UploadApi;
-use Dotenv\Dotenv;
 
 class ImageUploadService
 {
     private $cloudinary;
     private $uploadApi;
 
-    public function __construct()
+    public function __construct($config)
     {
         try {
-            $cloudName = 'dhwfvi0qd' ?? '';
-            $apiKey = '164873255923774' ?? '';
-            $apiSecret = '6nFdKCexRwD9i5SEpueEr14DMXw' ?? '';
+            $cloudName = $config['cloud_name']  ?? '';
+            $apiKey = $config['api_key']  ?? '';
+            $apiSecret = $config['api_secret']  ?? '';
 
             $configuration = new Configuration([
                 'cloud' => [
