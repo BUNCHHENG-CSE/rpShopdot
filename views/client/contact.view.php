@@ -6,7 +6,7 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <div class="carousel-background">
-                    <img src="asset/images/slider5.png" alt="" style="object-fit: cover;">
+                    <img src="asset/images/slider4.png" alt="" style="object-fit: cover;">
                     <div class="carousel-container">
                         <div class="carousel-content-container">
                             <h2>Contact Us</h2>

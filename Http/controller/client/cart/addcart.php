@@ -41,8 +41,6 @@ if (is_numeric($id)) {
             'quantity' => 1
         ];
     }
-    dd($_SESSION['cart']);
-    die();
     header("Location: /product/{$id}");
     exit();
 } else {

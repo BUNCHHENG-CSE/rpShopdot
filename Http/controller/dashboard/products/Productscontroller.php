@@ -58,13 +58,6 @@ class ProductsController
     public function showOneProductAddCart($id)
     {
         $product = $this->db->query("
-<<<<<<< HEAD
-        SELECT p.*, c.category_name
-        FROM products p
-        LEFT JOIN categories c ON p.category_id = c.category_id
-        WHERE p.product_id = ?
-    ", [$id])->findOrFail();
-=======
             SELECT p.*, c.category_name
             FROM products p
             LEFT JOIN categories c ON p.category_id = c.category_id
@@ -77,7 +70,6 @@ class ProductsController
             $_SESSION['cart_message'] = "Product added jol hz";
         }
         $product['quantity'] = min($quantity, $product['stock']);
->>>>>>> 4e818962fe732f377376943ee6b5576c336abbf1
 
         return $product;
     }

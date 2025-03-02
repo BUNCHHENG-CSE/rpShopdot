@@ -1,14 +1,14 @@
 <?php require base_path('views/client/partials/head.php') ?>
 <?php require base_path('views/client/partials/nav.php') ?>
-
+<?php $totalPrice = 0; ?>
 <section class="hero" id="hero">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <div class="carousel-background">
-                <img src="/../asset/images/slider7.png" alt="" style="object-fit: cover;">
+                <img src="/../asset/images/slider5.png" alt="" style="object-fit: cover;">
                 <div class="carousel-container">
                     <div class="carousel-content-container">
-                        <h2>Product Details</h2>
+                        <h2>Cart</h2>
                     </div>
                 </div>
             </div>
@@ -16,59 +16,107 @@
     </div>
 </section>
 
-<div class="container my-5">
-    <?php
-    if (isset($_SESSION['cart_message'])) {
-        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">' .
-            htmlspecialchars($_SESSION['cart_message']) .
-            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
-        unset($_SESSION['cart_message']);
-    }
-    ?>
+<div class="site-section">
+    <section class="" style="width: 100%;">
+        <table class="table table-bordered ">
+            <thead>
+                <tr>
+                    <th class="text-center" style="width: 6.25rem;"></th>
+                    <th class="text-center" style="width: 9.375rem;">Image</th>
+                    <th class="text-center" style="width: 12.5rem;">Product</th>
+                    <th class="text-center" style="width: 6.25rem;">Price</th>
+                    <th class="text-center" style="width: 6.25rem;">Quantity</th>
+                    <th class="text-center" style="width: 6.25rem;">Subtotal</th>
+                </tr>
+            </thead>
+            <tbody id="cart-products-display">
+                <?php if ($_SESSION['cart'] ?? false) : ?>
+                    <?php foreach ($_SESSION['cart'] as $item) : ?>
+                        <tr>
+                            <td class="text-center">
+                                <button type="button" class="btn btn-danger">
+                                    <span>&times;</span>
+                                </button>
+                            </td>
+                            <td class="text-center">
+                                <img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?>" class="img-fluid" style="max-width: 50px;">
+                            </td>
+                            <td class="text-center"><?= $item['name'] ?></td>
+                            <td class="text-center">$<?= $item['price'] ?></td>
+                            <td class="text-center">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <button class="btn btn-sm btn-outline-secondary">-</button>
+                                    <input type="text" class="form-control text-center" value="<?= $item['quantity'] ?>" />
+                                    <button class="btn btn-sm btn-outline-secondary">+</button>
+                                </div>
+                            </td>
+                            <?php $totalPrice = $totalPrice + ($item['price'] * $item['quantity']); ?>
+                            <td class="text-center">$<?= $item['price'] * $item['quantity']   ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="6" class="text-center">Your cart is empty</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </section>
+</div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <img src="<?= htmlspecialchars($product['image_url']) ?>"
-                alt="<?= htmlspecialchars($product['name']) ?>"
-                class="img-fluid rounded">
-        </div>
-        <div class="col-md-6">
-            <h1 class="mb-3"><?= htmlspecialchars($product['name']) ?></h1>
-            <div class="mb-3">
-                <span class="text-muted">Category: <?= htmlspecialchars($product['category_name']) ?></span>
-            </div>
-            <h2 class="text-primary mb-3">$<?= number_format($product['price'], 2) ?></h2>
+<section class="d-flex flex-wrap justify-content-between p-3">
 
-            <div class="mb-3">
-                <strong>Description:</strong>
-                <p><?= htmlspecialchars($product['description']) ?></p>
-            </div>
-
-            <div class="mb-3">
-                <strong>Stock:</strong>
-                <span><?= $product['stock'] ?> units available</span>
-            </div>
-
-            <form action="/addcart/<?= $product['product_id'] ?>" method="GET">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="input-group mb-3">
-                            <input type="number"
-                                class="form-control text-center"
-                                value="1"
-                                min="1"
-                                max="<?= $product['stock'] ?>"
-                                name="quantity">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <button type="submit" class="btn btn-dark w-100">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </form>
+    <div class="mb-4 border p-3" style="width: 80%;">
+        <h3 class="mb-3">Cart Totals</h3>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <td>Cart Subtotal</td>
+                    <td id="cart-subtotal">$<?= $totalPrice ?></td>
+                </tr>
+                <tr>
+                    <td>Shipping</td>
+                    <td>Free</td>
+                </tr>
+                <tr>
+                    <td><strong>Total</strong></td>
+                    <td><strong id="cart-total">$<?= $totalPrice ?></strong></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-group">
+            <div id="paypal-button-container"></div>
         </div>
     </div>
-</div>
+</section>
+
+<section id="fh5co-started">
+    <div class="container">
+        <div class="row"
+            style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+            <div class="col-md-8 col-md-offset-2 fh5co-heading" style="text-align: center;">
+                <h2>Newsletter</h2>
+                <p>Just stay tuned for our latest product. Now you can subscribe.</p>
+            </div>
+        </div>
+        <div class="row" style="display: flex; justify-content: center; align-items: center;">
+            <div class="col-md-8 col-md-offset-2">
+                <form class="form-inline"
+                    style="display: flex; justify-content: center; align-items: center; width: 100%;">
+                    <div class="col-md-6 col-sm-6">
+                        <div style="display: flex; justify-content: center;">
+
+                            <input type="email" class="form-control" style="width: 90%; height: 54px;" id="email"
+                                placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6" style="display: flex; justify-content: center;">
+                        <button type="submit" class="btn ">Subscribe</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
 <?php require base_path('views/client/partials/footer.php') ?>
