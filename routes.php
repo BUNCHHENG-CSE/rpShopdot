@@ -5,11 +5,10 @@
 $router->get('/', 'client/index.php');
 $router->get('/about', 'client/about.php');
 $router->get('/contact', 'client/contact.php');
-
 $router->get('/products', 'client/products/index.php');
-
 $router->get('/product/{id}', 'client/products/show.php');
 $router->get('/cart', 'client/cart/index.php');
+$router->get('/addcart/{id}', 'client/cart/addcart.php');
 $router->get('/profile', 'client/profile/index.php');
 
 // user regisration

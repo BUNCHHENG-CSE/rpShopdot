@@ -7,7 +7,7 @@
 		<div class="carousel-inner">
 			<div class="carousel-item active">
 				<div class="carousel-background">
-					<img src="asset/images/slider3.png" alt="" style="object-fit: cover;">
+					<img src="/../asset/images/slider3.png" alt="" style="object-fit: cover;">
 					<div class="carousel-container">
 						<div class="carousel-content-container">
 							<h2>About Us</h2>
@@ -35,7 +35,7 @@
 					</div>
 				</div>
 				<div class="col-md-6">
-					<img class="img-fluid" src="./images/img_bg_1.jpg" alt="about">
+					<img class="img-fluid" src="asset/images/MRGB2000JS1A.png" alt="about">
 				</div>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 		<div class="row">
 			<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
 				<div class="fh5co-staff">
-					<img src="./images/person1.jpg" alt="Free HTML5 Templates by gettemplates.co">
+					<img src="asset/images/person1.jpg" alt="Free HTML5 Templates by gettemplates.co">
 					<h3>Jean Smith</h3>
 					<strong class="role">Chief Executive Officer</strong>
 					<p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit eaque aspernatur expedita. Possimus itaque adipisci.</p>
@@ -58,7 +58,7 @@
 			</div>
 			<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
 				<div class="fh5co-staff">
-					<img src="./images/person2.jpg" alt="Free HTML5 Templates by gettemplates.co">
+					<img src="asset/images/person2.jpg" alt="Free HTML5 Templates by gettemplates.co">
 					<h3>Hush Raven</h3>
 					<strong class="role">Co-Owner</strong>
 					<p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit eaque aspernatur expedita. Possimus itaque adipisci.</p>
@@ -66,7 +66,7 @@
 			</div>
 			<div class="col-md-4 col-sm-4 animate-box" data-animate-effect="fadeIn">
 				<div class="fh5co-staff">
-					<img src="./images/person3.jpg" alt="Free HTML5 Templates by gettemplates.co">
+					<img src="asset/images/person3.jpg" alt="Free HTML5 Templates by gettemplates.co">
 					<h3>Alex King</h3>
 					<strong class="role">Co-Owner</strong>
 					<p>Quos quia provident consequuntur culpa facere ratione maxime commodi voluptates id repellat velit eaque aspernatur expedita. Possimus itaque adipisci.</p>

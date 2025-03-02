@@ -10,9 +10,8 @@
                     <div class="carousel-container">
                         <div class="carousel-content-container">
                             <p style="color: gray; font-size: 20px; text-align: left; padding-left: 10rem;">$800</p>
-                            <h2>Alato Cabinet</h2>
-                            <p>Far far away, behind the word mountains, far from the countries Vokalia and
-                                Consonantia, there live the blind texts. Separated they live in Bookmarksgrove.
+                            <h2>Time, Redefined.</h2>
+                            <p>More than just a watch—it's a statement of style, precision, and adventure. Find the perfect timepiece to match your journey.
                             </p>
                             <div class="buttons">
                                 <a href="/products" class="button1">Explore Products</a>
@@ -21,61 +20,52 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
 </section>
 
 <section class="feature mt-5 mb-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="main-feature-box">
-                    <div class="icon" style="background-color:#fddde4 ;">
-                        <i class="bi bi-credit-card"></i>
+            <div class="col-lg-4 col-md-4 col-sm-12 d-flex">
+                <div class="main-feature-box flex-grow-1 d-flex flex-column align-items-start text-start p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon me-3" style="background-color:#fddde4;">
+                            <i class="bi bi-credit-card"></i>
+                        </div>
+                        <h3 class="m-0">Credit Card</h3>
                     </div>
-                    <h3>Credit Card</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                        there live the blind texts. Separated they live in Bookmarksgrove</p>
+                    <p class="flex-grow-1">Unlock seamless shopping with our exclusive credit card! Enjoy instant approvals, cashback rewards, and interest-free EMIs—designed for smart buyers like you.</p>
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="main-feature-box">
-                    <div class="icon" style="background-color:#cdebbc ;">
-                        <i class="bi bi-wallet2"></i>
+            <div class="col-lg-4 col-md-4 col-sm-12 d-flex">
+                <div class="main-feature-box flex-grow-1 d-flex flex-column align-items-start text-start p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon me-3" style="background-color:#cdebbc;">
+                            <i class="bi bi-wallet2"></i>
+                        </div>
+                        <h3 class="m-0">Save Money</h3>
                     </div>
-                    <h3>Save Money</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                        there live the blind texts. Separated they live in Bookmarksgrove</p>
+                    <p class="flex-grow-1">Shop smart, save big! Get cashback, discounts, and exclusive offers with our credit card—because every penny counts.</p>
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-4 col-sm-12">
-                <div class="main-feature-box">
-                    <div class="icon" style="background-color:#d1e8f2 ;">
-                        <i class="bi bi-send"></i>
+            <div class="col-lg-4 col-md-4 col-sm-12 d-flex">
+                <div class="main-feature-box flex-grow-1 d-flex flex-column align-items-start text-start p-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon me-3" style="background-color:#d1e8f2;">
+                            <i class="bi bi-send"></i>
+                        </div>
+                        <h3 class="m-0">Free Delivery</h3>
                     </div>
-                    <h3>Free Delivery</h3>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-                        there live the blind texts. Separated they live in Bookmarksgrove</p>
+                    <p class="flex-grow-1">Shop more, spend less! Enjoy exclusive free delivery on all your orders with our credit card benefits.</p>
                 </div>
             </div>
-
-
         </div>
     </div>
+
+
 </section>
 
 <section class="productfeature mt-5 mb-5">
@@ -96,12 +86,11 @@
                         </div>
                         <h3><?= $product['name'] ?></h3>
                         <p><?= $product['price'] ?></p>
-                        <div class="buttons"><a href="./pages/product1.html" class="button3">Read More <i class="bi bi-arrow-right"></i></a>
+                        <div class="buttons"><a href="/product/<?= $product['product_id'] ?> " class=" button3">Read More <i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             <?php endforeach ?>
-
         </div>
     </div>
 </section>

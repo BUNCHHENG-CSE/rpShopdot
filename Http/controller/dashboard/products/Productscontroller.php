@@ -55,6 +55,17 @@ class ProductsController
             'relatedProducts' => $relatedProducts
         ]);
     }
+    public function showOneProductAddCart($id)
+    {
+        $product = $this->db->query("
+        SELECT p.*, c.category_name
+        FROM products p
+        LEFT JOIN categories c ON p.category_id = c.category_id
+        WHERE p.product_id = ?
+    ", [$id])->findOrFail();
+       $product['quantity'] = $_POST['quantity'];
+        return $product;
+    }
     public function filterproduct($page)
     {
         $products = $this->db->query("
