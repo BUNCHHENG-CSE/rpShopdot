@@ -2,97 +2,73 @@
 <?php require base_path('views/client/partials/nav.php') ?>
 
 <section class="hero" id="hero">
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="carousel-background">
-                    <img src="asset/images/slider4.png" alt="" style="object-fit: cover;">
-                    <div class="carousel-container">
-                        <div class="carousel-content-container">
-                            <h2>Cart</h2>
-                        </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <div class="carousel-background">
+                <img src="/../asset/images/slider7.png" alt="" style="object-fit: cover;">
+                <div class="carousel-container">
+                    <div class="carousel-content-container">
+                        <h2>Product Details</h2>
                     </div>
-
-
                 </div>
             </div>
-
-        </div>
-    </div>
-</section>
-<div class="site-section">
-    <section class="" style="width: 100%;">
-        <table class="table table-bordered ">
-            <thead>
-                <tr>
-                    <th class="text-center" style="width: 6.25rem;"></th>
-                    <th class="text-center" style="width: 9.375rem;">Image</th>
-                    <th class="text-center" style="width: 12.5rem;">Product</th>
-                    <th class="text-center" style="width: 6.25rem;">Price</th>
-                    <th class="text-center" style="width: 6.25rem;">Quantity</th>
-                    <th class="text-center" style="width: 6.25rem;">Subtotal</th>
-                </tr>
-            </thead>
-            <tbody id="cart-products-display">
-
-            </tbody>
-        </table>
-    </section>
-</div>
-
-<section class="d-flex flex-wrap justify-content-between p-3">
-
-    <div class="mb-4 border p-3" style="width: 80%;">
-        <h3 class="mb-3">Cart Totals</h3>
-        <table class="table">
-            <tbody>
-                <tr>
-                    <td>Cart Subtotal</td>
-                    <td id="cart-subtotal">$0.00</td>
-                </tr>
-                <tr>
-                    <td>Shipping</td>
-                    <td>Free</td>
-                </tr>
-                <tr>
-                    <td><strong>Total</strong></td>
-                    <td><strong id="cart-total">$0.00</strong></td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="form-group">
-            <div id="paypal-button-container"></div>
         </div>
     </div>
 </section>
 
-<section id="fh5co-started">
-    <div class="container">
-        <div class="row"
-            style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-            <div class="col-md-8 col-md-offset-2 fh5co-heading" style="text-align: center;">
-                <h2>Newsletter</h2>
-                <p>Just stay tuned for our latest product. Now you can subscribe.</p>
+<div class="container my-5">
+    <?php
+    if (isset($_SESSION['cart_message'])) {
+        echo '<div class="alert alert-success alert-dismissible fade show" role="alert">' .
+            htmlspecialchars($_SESSION['cart_message']) .
+            '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>';
+        unset($_SESSION['cart_message']);
+    }
+    ?>
+
+    <div class="row">
+        <div class="col-md-6">
+            <img src="<?= htmlspecialchars($product['image_url']) ?>"
+                alt="<?= htmlspecialchars($product['name']) ?>"
+                class="img-fluid rounded">
+        </div>
+        <div class="col-md-6">
+            <h1 class="mb-3"><?= htmlspecialchars($product['name']) ?></h1>
+            <div class="mb-3">
+                <span class="text-muted">Category: <?= htmlspecialchars($product['category_name']) ?></span>
             </div>
-        </div>
-        <div class="row" style="display: flex; justify-content: center; align-items: center;">
-            <div class="col-md-8 col-md-offset-2">
-                <form class="form-inline"
-                    style="display: flex; justify-content: center; align-items: center; width: 100%;">
-                    <div class="col-md-6 col-sm-6">
-                        <div style="display: flex; justify-content: center;">
+            <h2 class="text-primary mb-3">$<?= number_format($product['price'], 2) ?></h2>
 
-                            <input type="email" class="form-control" style="width: 90%; height: 54px;" id="email"
-                                placeholder="Email">
+            <div class="mb-3">
+                <strong>Description:</strong>
+                <p><?= htmlspecialchars($product['description']) ?></p>
+            </div>
+
+            <div class="mb-3">
+                <strong>Stock:</strong>
+                <span><?= $product['stock'] ?> units available</span>
+            </div>
+
+            <form action="/addcart/<?= $product['product_id'] ?>" method="GET">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-group mb-3">
+                            <input type="number"
+                                class="form-control text-center"
+                                value="1"
+                                min="1"
+                                max="<?= $product['stock'] ?>"
+                                name="quantity">
                         </div>
                     </div>
-                    <div class="col-md-6 col-sm-6" style="display: flex; justify-content: center;">
-                        <button type="submit" class="btn ">Subscribe</button>
+                    <div class="col-md-6">
+                        <button type="submit" class="btn btn-dark w-100">
+                            Add to Cart
+                        </button>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
-
-</section>
+</div>
 <?php require base_path('views/client/partials/footer.php') ?>
