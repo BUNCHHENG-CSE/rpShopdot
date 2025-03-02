@@ -17,7 +17,7 @@ $router->post('/login', 'client/login/index.php');
 $router->post('/logout', 'client/login/destroy.php');
 /**** Admin Interface */
 
-$router->get('/dashboard', 'dashboard/index.php')->only('superuser');
+$router->get('/dashboard', 'dashboard/index.php');
 
 //product dashboard
 $router->get('/tbproducts', 'dashboard/products/index.php');

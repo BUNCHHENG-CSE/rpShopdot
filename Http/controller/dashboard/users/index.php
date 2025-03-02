@@ -1,5 +1,7 @@
 <?php
+
 namespace Http\controller\dashboard\users;
+
 use Core\App;
 use Core\Database;
 use Core\Services\ImageUploadService;
@@ -13,6 +15,8 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 if ($uri === '/tbusers' && $method === 'GET') {
     $controller->index();
+} elseif ($uri === '/tbusers/delete' && $method === 'POST') {
+    $controller->destroy($_POST);
 }
 // } elseif ($uri === '/tbproducts' && $method === 'POST') {
 //     if (!isset($_POST['product_id'])) {
@@ -20,5 +24,3 @@ if ($uri === '/tbusers' && $method === 'GET') {
 //     }
 // } elseif ($uri === '/tbproducts/update' && $method === 'POST') {
 //     $controller->update($_POST);
-// } elseif ($uri === '/tbproducts/delete' && $method === 'POST') {
-//     $controller->destroy($_POST);

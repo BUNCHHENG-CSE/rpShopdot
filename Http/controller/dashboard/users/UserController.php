@@ -22,11 +22,12 @@ class UserController
     {
 
         $users = $this->db->query("
-            SELECT u.name,u.email, r.name
+            SELECT u.user_id,u.name,u.email,u.image_url ,r.name as role_name
             FROM users u
             LEFT JOIN roles r ON u.roles_id = r.roles_id
         ")->get();
-        view('dashboard/users/index.view.php',[
+
+        view('dashboard/users/index.view.php', [
             "heading" => "Users",
             "users" => $users
         ]);
@@ -42,7 +43,6 @@ class UserController
 
         if (!Validator::email($request['user-email'])) {
             $errors['user-email'] = 'Invalid email address.';
-
         }
 
         if (!Validator::string($request['user-password'], 8, 255)) {
@@ -54,7 +54,10 @@ class UserController
         }
 
         if (!empty($errors)) {
-            ValidationException::throw($errors, $request);
+            foreach ($errors as $error) {
+                echo  "<script>alert('$error');</script>";
+                return redirect('/');
+            }
         }
 
         $this->db->query("
@@ -110,7 +113,7 @@ class UserController
     public function destroy($request)
     {
         $id = $request['user_id'];
-        $this->db->query("DELETE FROM products WHERE user_id = ?", [$id]);
+        $this->db->query("DELETE FROM users WHERE user_id = ?", [$id]);
         redirect('/tbusers');
     }
 }

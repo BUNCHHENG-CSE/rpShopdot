@@ -33,34 +33,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php foreach ($users as $user ): ?>
                                         <tr>
                                             <td>
                                                 <div class="d-flex px-2 py-1">
                                                     <div>
-                                                        <img src="asset/images/MRGB2000JS1A.png" class="avatar avatar-xl me-3" alt="user1">
+                                                        <img src="<?= $user['image_url']?>" class="avatar avatar-xl me-3" alt="user1">
                                                     </div>
                                                     <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-lg">MRGB2000JS1A</h6>
+                                                        <h6 class="mb-0 text-lg"><?= $user['name']?></h6>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <p class="text-md font-weight-bold mb-0">$7999.99</p>
+                                                <p class="text-md font-weight-bold mb-0"><?= $user['email']?></p>
 
                                             </td>
                                             <td class="align-middle text-center text-sm">
-                                                <p class="text-md font-weight-bold mb-0">10</p>
+                                                <p class="text-md font-weight-bold mb-0"><?= $user['role_name']?></p>
                                             </td>
 
 
                                             <td class="align-middle">
                                                 <div class="ms-auto text-end">
-                                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                        href="javascript:;"><i class="far fa-trash-alt me-2 text-md"></i>Delete</a>
+
+                                                        <form action="/tbusers/delete" method="POST"
+                                                            onsubmit="return confirm('Are you sure you want to delete this user?');">
+                                                            <input type="hidden" name="user_id" value="<?= $user['user_id'] ?>">
+                                                            <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
+                                                                <i class="far fa-trash-alt me-2 text-md"></i>
+                                                                Delete
+                                                            </button>
+                                                        </form>
                                                 </div>
                                             </td>
-                                        </tr>
 
+
+                                        </tr>
+                                    <?php endforeach ?>
                                     </tbody>
                                 </table>
                             </div>

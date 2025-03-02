@@ -63,7 +63,7 @@ class ProductsController
         LEFT JOIN categories c ON p.category_id = c.category_id
         WHERE p.product_id = ?
     ", [$id])->findOrFail();
-       $product['quantity'] = $_POST['quantity'];
+
         return $product;
     }
     public function filterproduct($page)
