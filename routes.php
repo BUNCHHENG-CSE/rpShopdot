@@ -13,33 +13,33 @@ $router->get('/profile', 'client/profile/index.php');
 $router->post('/removecart', 'client/cart/remove.php');
 $router->post('/updatecart', 'client/cart/update.php');
 // user regisration
-$router->post('/register', 'client/registration/index.php');
-$router->post('/login', 'client/login/index.php');
-$router->post('/logout', 'client/login/destroy.php');
+$router->post('/register', 'client/registration/index.php')->only('guest');
+$router->post('/login', 'client/login/index.php')->only('guest');
+$router->post('/logout', 'client/login/destroy.php')->only('auth');
 /**** Admin Interface */
 
-$router->get('/dashboard', 'dashboard/index.php');
+$router->get('/dashboard', 'dashboard/index.php')->only('superuser');
 
 //product dashboard
-$router->get('/tbproducts', 'dashboard/products/index.php');
-$router->post('/tbproducts', 'dashboard/products/index.php');
-$router->post('/tbproducts/update', 'dashboard/products/index.php');
-$router->post('/tbproducts/delete', 'dashboard/products/index.php');
+$router->get('/tbproducts', 'dashboard/products/index.php')->only('superuser');
+$router->post('/tbproducts', 'dashboard/products/index.php')->only('superuser');
+$router->post('/tbproducts/update', 'dashboard/products/index.php')->only('superuser');
+$router->post('/tbproducts/delete', 'dashboard/products/index.php')->only('superuser');
 
 //category dashboard
-$router->get('/tbcategories', 'dashboard/categories/index.php');
-$router->post('/tbcategories', 'dashboard/categories/index.php');
-$router->post('/tbcategories/update', 'dashboard/categories/index.php');
-$router->post('/tbcategories/delete', 'dashboard/categories/index.php');
+$router->get('/tbcategories', 'dashboard/categories/index.php')->only('superuser');
+$router->post('/tbcategories', 'dashboard/categories/index.php')->only('superuser');
+$router->post('/tbcategories/update', 'dashboard/categories/index.php')->only('superuser');
+$router->post('/tbcategories/delete', 'dashboard/categories/index.php')->only('superuser');
 
 // order dashboard
-$router->get('/tborders', 'dashboard/orders/index.php');
-$router->post('/tborders', 'dashboard/orders/index.php');
-$router->post('/tborders/update', 'dashboard/orders/index.php');
-$router->post('/tborders/delete', 'dashboard/orders/index.php');
+$router->get('/tborders', 'dashboard/orders/index.php')->only('superuser');
+$router->post('/tborders', 'dashboard/orders/index.php')->only('superuser');
+$router->post('/tborders/update', 'dashboard/orders/index.php')->only('superuser');
+$router->post('/tborders/delete', 'dashboard/orders/index.php')->only('superuser');
 
 // user dashboard
 
-$router->get('/tbusers', 'dashboard/users/index.php');
+$router->get('/tbusers', 'dashboard/users/index.php')->only('superuser');
 $router->post('/tbusers/update', 'dashboard/users/index.php');
-$router->post('/tbusers/delete', 'dashboard/users/index.php');
+$router->post('/tbusers/delete', 'dashboard/users/index.php')->only('superuser');

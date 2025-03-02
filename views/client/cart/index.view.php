@@ -49,9 +49,9 @@
                             <td class="text-center">
                                 <form action="/updatecart" method="POST" class="cart-quantity-form">
                                     <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
-                                    <div class="d-flex align-items-center justify-content-center">
+                                    <div class="d-flex align-items-center justify-content-center gap-3">
                                         <button type="submit" name="action" value="decrease"
-                                            class="btn btn-sm btn-outline-secondary">-</button>
+                                            class="btn btn-md btn-outline-secondary border-0 ">-</button>
                                         <input type="text"
                                             name="quantity"
                                             class="form-control text-center"
@@ -60,7 +60,7 @@
                                             max="<?= $item['max_stock'] ?>"
                                             onchange="this.form.action.value='manual'; this.form.submit();">
                                         <button type="submit" name="action" value="increase"
-                                            class="btn btn-sm btn-outline-secondary">+</button>
+                                            class="btn btn-md btn-outline-secondary border-0">+</button>
                                     </div>
                                 </form>
                             </td>
@@ -112,33 +112,5 @@
 
 </section>
 
-<section id="fh5co-started">
-    <div class="container">
-        <div class="row"
-            style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-            <div class="col-md-8 col-md-offset-2 fh5co-heading" style="text-align: center;">
-                <h2>Newsletter</h2>
-                <p>Just stay tuned for our latest product. Now you can subscribe.</p>
-            </div>
-        </div>
-        <div class="row" style="display: flex; justify-content: center; align-items: center;">
-            <div class="col-md-8 col-md-offset-2">
-                <form class="form-inline"
-                    style="display: flex; justify-content: center; align-items: center; width: 100%;">
-                    <div class="col-md-6 col-sm-6">
-                        <div style="display: flex; justify-content: center;">
-
-                            <input type="email" class="form-control" style="width: 90%; height: 54px;" id="email"
-                                placeholder="Email">
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6" style="display: flex; justify-content: center;">
-                        <button type="submit" class="btn ">Subscribe</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-</section>
+<?php require base_path('views/client/partials/newsletter.php') ?>
 <?php require base_path('views/client/partials/footer.php') ?>

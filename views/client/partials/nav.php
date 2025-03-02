@@ -16,7 +16,6 @@
                     <li class="nav-item">
                         <a class="nav-link <?= urlIs('/products') ?  "active" : "" ?>" aria-current="page" href="/products">Product</a>
                     </li>
-
                     <li class="nav-item">
                         <a class="nav-link <?= urlIs('/about') ?  "active" : "" ?>" aria-current="page" href="/about">About</a>
                     </li>
@@ -35,7 +34,7 @@
                                 : 0;
                             ?>
 
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">
                                 <?= $cartItemCount ?>
                                 <span class="visually-hidden">items in cart</span>
                             </span>

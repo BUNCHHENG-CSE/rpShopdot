@@ -32,5 +32,6 @@ if (!$signedIn) {
         'No matching account found for that email address and password.'
     );
 }
-redirect('/');
+
+$_SESSION['user']['role'] === 'admin' ? redirect('/dashboard') : redirect('/');
 exit;

@@ -10,13 +10,14 @@ class Authenticator
         $user = (App::resolve(Database::class))->query('SELECT * FROM users WHERE email = :email', ['email' => $email])->find();
 
         if ($user) {
+            dd($user['roles_id']);
             if (password_verify($password, $user['password'])) {
 
                 $this->login([
                     'email' => $email,
                     'name' => $user['name'],
                     'image_url' => $user['image_url'],
-                    'role' => $user['role_id'] == 1 ? 'admin' : 'customer'
+                    'role' => $user['roles_id'] === 1 ? 'admin' : 'customer'
 
                 ]);
                 return true;
@@ -26,16 +27,16 @@ class Authenticator
         return false;
     }
 
+
     public function login($user)
     {
         $_SESSION['user'] = [
             'email' => $user['email'],
             'name' => $user['name'],
             'image_path' => $user['image_url'],
-            'role' => $user['role_id'] == 1 ? 'admin' : 'customer'
+            'role' => $user['role']
         ];
         session_regenerate_id();
-
     }
     public function logout()
     {

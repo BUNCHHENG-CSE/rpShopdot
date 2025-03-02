@@ -9,6 +9,7 @@ class Middleware
         'guest' => Guest::class,
         'auth' => Auth::class,
         'superuser' => SuperUser::class,
+
     ];
 
     public static function resolve($key)

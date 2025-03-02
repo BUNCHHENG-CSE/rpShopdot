@@ -40,17 +40,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="input-group mb-3">
-                        <button type="submit" name="action" value="decrease"
-                            class="btn btn-sm btn-outline-secondary">-</button>
-                        <input type="text" class="form-control text-center" value="1" id="quantity" name="quantity">
-                        <button type="submit" name="action" value="increase"
-                            class="btn btn-sm btn-outline-secondary">+</button>
-                    </div>
-                </div>
-                <div class="col-md-6">
-
+                <div class="col-md-6 mb-3">
                     <a href="/addcart/<?= $product['product_id'] ?>" class="btn btn-dark w-100">
                         Add to Cart
                     </a>
@@ -64,20 +54,20 @@
     <h2 class="text-center mb-4">Related Products</h2>
     <div class="row">
         <?php foreach ($relatedProducts as $relatedProduct): ?>
-            <div class="col-md-3">
-                <div class="card mb-4">
+            <div class="col-md-3 ">
+                <div class="card mb-4  pt-4" style="border-radius: 20px;">
                     <img src="<?= htmlspecialchars($relatedProduct['image_url']) ?>"
                         class="card-img-top"
                         alt="<?= htmlspecialchars($relatedProduct['name']) ?>">
                     <div class="card-body">
                         <h5 class="card-title"><?= htmlspecialchars($relatedProduct['name']) ?></h5>
                         <p class="card-text">$<?= number_format($relatedProduct['price'], 2) ?></p>
-                        <a href="/product/<?= $relatedProduct['product_id'] ?>" class="btn btn-primary">View Details</a>
+                        <a href="/product/<?= $relatedProduct['product_id'] ?>" class="btn btn-dark w-100">View Details</a>
                     </div>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
 </section>
-
+<?php //require base_path('views/client/partials/newsletter.php') ?>
 <?php require base_path('views/client/partials/footer.php') ?>
