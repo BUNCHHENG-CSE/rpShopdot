@@ -37,7 +37,7 @@
                             <img src="<?= $product['image_url'] ?>" class="img-fluid product-grid" alt="">
                         </div>
                         <h3><?= $product['name'] ?></h3>
-                        <p><?= $product['price'] ?></p>
+                        <p>$ <?= $product['price'] ?></p>
                         <div class="buttons">
                             <a href="/product/<?= $product['product_id'] ?>" class="button3">
                                 Read More <i class="bi bi-arrow-right"></i>

@@ -1,8 +1,8 @@
 const navEL = document.querySelector(".navbar");
 window.addEventListener("scroll", () => {
-    if (window.scrollY >= 806) {
+    if (window.scrollY >= 206) {
         navEL.classList.add("navbar-scrolled");
-    } else if (window.scrollY < 806) {
+    } else if (window.scrollY < 206) {
         navEL.classList.remove("navbar-scrolled");
     }
 });

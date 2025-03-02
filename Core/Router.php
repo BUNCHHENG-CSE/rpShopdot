@@ -42,15 +42,18 @@ class Router
     public function route($uri, $method)
     {
         $matches = [];
+        $matchesAddcart = [];
         $dynamicRoute = preg_match('/^\/product\/(\d+)$/', $uri, $matches);
+        $dynamicRouteAddcart = preg_match('/^\/addcart\/(\d+)$/', $uri, $matchesAddcart);
         foreach ($this->routes as $route) {
-            if (($route['uri'] === $uri ||
-                    ($dynamicRoute && $route['uri'] === '/product/{id}')) &&
-                $route['method'] === strtoupper($method)
+            if (($route['uri'] === $uri || ($dynamicRoute && $route['uri'] === '/product/{id}') || ($dynamicRouteAddcart && $route['uri'] === '/addcart/{id}')) && $route['method'] === strtoupper($method)
             ) {
                 Middleware::resolve($route['middleware']);
                 if ($dynamicRoute) {
                     $_GET['id'] = $matches[1];
+                }
+                if ($dynamicRouteAddcart) {
+                    $_GET['id'] = $matchesAddcart[1];
                 }
                 return require base_path('Http/controller/' . $route['controller']);
             }

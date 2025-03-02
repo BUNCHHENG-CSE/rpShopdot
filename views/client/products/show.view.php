@@ -15,8 +15,6 @@
         </div>
     </div>
 </section>
-
-
 <div class="container my-5">
     <div class="row">
         <div class="col-md-6">
@@ -44,13 +42,16 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="input-group mb-3">
-                        <button class="btn btn-outline-secondary" type="button" id="minus-btn">-</button>
-                        <input type="text" class="form-control text-center" value="1" id="quantity">
-                        <button class="btn btn-outline-secondary" type="button" id="plus-btn">+</button>
+                        <!-- <button class="btn btn-outline-secondary" type="button" id="minus-btn">-</button> -->
+                        <input type="text" class="form-control text-center" value="1" id="quantity" name="quantity">
+                        <!-- <button class="btn btn-outline-secondary" type="button" id="plus-btn">+</button> -->
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <button class="btn btn-dark w-100">Add to Cart</button>
+
+                    <a href="/addcart/<?= $product['product_id'] ?>" class="btn btn-dark w-100">
+                        Add to Cart
+                    </a>
                 </div>
             </div>
         </div>
