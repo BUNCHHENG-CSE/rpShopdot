@@ -28,8 +28,11 @@ if (isset($_POST['product_id']) && is_numeric($_POST['product_id'])) {
                             $item['quantity'] = max($item['quantity'] - 1, 1);
                             break;
                         case 'manual':
-                            $newQuantity = isset($_POST['quantity']) ? intval($_POST['quantity']) : $item['quantity'];
-                            $item['quantity'] = max(1, min($newQuantity, $item['max_stock']));
+                            $newQuantity = trim($_POST['quantity']);
+                            if (ctype_digit($newQuantity)) {
+                                $newQuantity = intval($newQuantity);
+                                $item['quantity'] = max(1, min($newQuantity, $item['max_stock']));
+                            }
                             break;
                     }
                 }

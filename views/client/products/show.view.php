@@ -42,9 +42,11 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="input-group mb-3">
-                        <!-- <button class="btn btn-outline-secondary" type="button" id="minus-btn">-</button> -->
+                        <button type="submit" name="action" value="decrease"
+                            class="btn btn-sm btn-outline-secondary">-</button>
                         <input type="text" class="form-control text-center" value="1" id="quantity" name="quantity">
-                        <!-- <button class="btn btn-outline-secondary" type="button" id="plus-btn">+</button> -->
+                        <button type="submit" name="action" value="increase"
+                            class="btn btn-sm btn-outline-secondary">+</button>
                     </div>
                 </div>
                 <div class="col-md-6">

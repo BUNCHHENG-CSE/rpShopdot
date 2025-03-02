@@ -47,17 +47,22 @@
                             <td class="text-center"><?= $item['name'] ?></td>
                             <td class="text-center">$<?= $item['price'] ?></td>
                             <td class="text-center">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <button type="submit" name="action" value="decrease" class="btn btn-sm btn-outline-secondary me-2">-</button>
-                                    <input type="text"
-                                        name="quantity"
-                                        class="form-control text-center"
-                                        value="<?= $item['quantity'] ?>"
-                                        style="width: 60px;"
-                                        min="1"
-                                        max="<?= $item['max_stock'] ?>">
-                                    <button type="submit" name="action" value="increase" class="btn btn-sm btn-outline-secondary ms-2">+</button>
-                                </div>
+                                <form action="/updatecart" method="POST" class="cart-quantity-form">
+                                    <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
+                                    <div class="d-flex align-items-center justify-content-center">
+                                        <button type="submit" name="action" value="decrease"
+                                            class="btn btn-sm btn-outline-secondary">-</button>
+                                        <input type="text"
+                                            name="quantity"
+                                            class="form-control text-center"
+                                            value="<?= $item['quantity'] ?>"
+                                            min="1"
+                                            max="<?= $item['max_stock'] ?>"
+                                            onchange="this.form.action.value='manual'; this.form.submit();">
+                                        <button type="submit" name="action" value="increase"
+                                            class="btn btn-sm btn-outline-secondary">+</button>
+                                    </div>
+                                </form>
                             </td>
                             <?php $totalPrice = $totalPrice + ($item['price'] * $item['quantity']); ?>
                             <td class="text-center">$<?= $item['price'] * $item['quantity']   ?></td>
@@ -91,12 +96,20 @@
                     <td><strong>Total</strong></td>
                     <td><strong id="cart-total">$<?= $totalPrice ?></strong></td>
                 </tr>
+                <tr>
+                    <td>Checkout</td>
+                    <td> <?php if (!empty($_SESSION['cart'])): ?>
+                            <a href="/checkout" class="btn btn-primary">Proceed to Checkout</a>
+                        <?php endif; ?>
+                </tr>
+
             </tbody>
         </table>
-        <div class="form-group">
-            <div id="paypal-button-container"></div>
-        </div>
+
+
     </div>
+    </div>
+
 </section>
 
 <section id="fh5co-started">
