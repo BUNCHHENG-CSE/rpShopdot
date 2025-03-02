@@ -34,9 +34,12 @@
                     <?php foreach ($_SESSION['cart'] as $item) : ?>
                         <tr>
                             <td class="text-center">
-                                <button type="button" class="btn btn-danger">
-                                    <span>&times;</span>
-                                </button>
+                                <form action="/removecart" method="POST" onsubmit="return confirm('Are you sure you want to remove this item?');">
+                                    <input type="hidden" name="product_id" value="<?= $item['id'] ?>">
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <span>&times;</span>
+                                    </button>
+                                </form>
                             </td>
                             <td class="text-center">
                                 <img src="<?= $item['image'] ?>" alt="<?= $item['name'] ?>" class="img-fluid" style="max-width: 50px;">
@@ -45,9 +48,15 @@
                             <td class="text-center">$<?= $item['price'] ?></td>
                             <td class="text-center">
                                 <div class="d-flex align-items-center justify-content-center">
-                                    <button class="btn btn-sm btn-outline-secondary">-</button>
-                                    <input type="text" class="form-control text-center" value="<?= $item['quantity'] ?>" />
-                                    <button class="btn btn-sm btn-outline-secondary">+</button>
+                                    <button type="submit" name="action" value="decrease" class="btn btn-sm btn-outline-secondary me-2">-</button>
+                                    <input type="text"
+                                        name="quantity"
+                                        class="form-control text-center"
+                                        value="<?= $item['quantity'] ?>"
+                                        style="width: 60px;"
+                                        min="1"
+                                        max="<?= $item['max_stock'] ?>">
+                                    <button type="submit" name="action" value="increase" class="btn btn-sm btn-outline-secondary ms-2">+</button>
                                 </div>
                             </td>
                             <?php $totalPrice = $totalPrice + ($item['price'] * $item['quantity']); ?>

@@ -20,14 +20,12 @@ if (is_numeric($id)) {
     if (!isset($_SESSION['cart'])) {
         $_SESSION['cart'] = [];
     }
-
-
+    $quantity = isset($_GET['quantity']) ? max(1, intval($_GET['quantity'])) : 1;
     $product = $controller->showOneProductAddCart($id);
-
     $productExists = false;
     foreach ($_SESSION['cart'] as &$item) {
         if ($item['id'] == $product['product_id']) {
-            $item['quantity'] += 1;
+            $item['quantity'] = min($item['quantity'] + $quantity, $product['stock']);
             $productExists = true;
             break;
         }
@@ -38,9 +36,12 @@ if (is_numeric($id)) {
             'name' => $product['name'],
             'price' => $product['price'],
             'image' => $product['image_url'],
-            'quantity' => 1
+            'quantity' => min($quantity, $product['stock']),
+            'max_stock' => $product['stock']
         ];
     }
+    // dd($_SESSION['cart']);
+    // die();
     header("Location: /product/{$id}");
     exit();
 } else {

@@ -10,7 +10,8 @@ $router->get('/product/{id}', 'client/products/show.php');
 $router->get('/cart', 'client/cart/index.php');
 $router->get('/addcart/{id}', 'client/cart/addcart.php');
 $router->get('/profile', 'client/profile/index.php');
-
+$router->post('/removecart', 'client/cart/remove.php');
+$router->post('/updatecart', 'client/cart/update.php');
 // user regisration
 $router->post('/register', 'client/registration/index.php');
 $router->post('/login', 'client/login/index.php');
