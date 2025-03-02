@@ -42,7 +42,7 @@ class ImageUploadService
             throw new \InvalidArgumentException('No file uploaded or upload error occurred');
         }
 
-        $maxFileSize = 5 * 1024 * 1024; // 5MB
+        $maxFileSize = 5 * 1024 * 1024;
         if ($file['size'] > $maxFileSize) {
             throw new \InvalidArgumentException("File too large. Maximum {$maxFileSize} bytes allowed.");
         }
