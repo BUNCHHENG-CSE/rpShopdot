@@ -58,11 +58,26 @@ class ProductsController
     public function showOneProductAddCart($id)
     {
         $product = $this->db->query("
+<<<<<<< HEAD
         SELECT p.*, c.category_name
         FROM products p
         LEFT JOIN categories c ON p.category_id = c.category_id
         WHERE p.product_id = ?
     ", [$id])->findOrFail();
+=======
+            SELECT p.*, c.category_name
+            FROM products p
+            LEFT JOIN categories c ON p.category_id = c.category_id
+            WHERE p.product_id = ?
+        ", [$id])->findOrFail();
+        $quantity = isset($_GET['quantity']) ? max(1, intval($_GET['quantity'])) : 1;
+        if ($quantity > $product['stock']) {
+            $_SESSION['cart_message'] = "Sorry, mean {$product['stock']} tah pin ng te ";
+        } else {
+            $_SESSION['cart_message'] = "Product added jol hz";
+        }
+        $product['quantity'] = min($quantity, $product['stock']);
+>>>>>>> 4e818962fe732f377376943ee6b5576c336abbf1
 
         return $product;
     }
