@@ -6,7 +6,7 @@ class SuperUser
 {
     public function handle()
     {
-        if (! $_SESSION['user']['role'] == 'admin' ?? false) {
+        if ($_SESSION['user']['role'] !== 'admin' ?? false) {
             header('Location: /');
             exit();
         }
