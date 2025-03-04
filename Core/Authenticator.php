@@ -40,6 +40,8 @@ class Authenticator
     }
     public function logout()
     {
-        Session::destroy();
+        //Session::destroy();
+        $_SESSION['user'] = [];
+        // session_destroy();
     }
 }
