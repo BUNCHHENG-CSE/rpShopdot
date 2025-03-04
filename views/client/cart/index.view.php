@@ -106,7 +106,7 @@ $cartItems = $_SESSION['cart'] ?? [];
 
                         <?php if (!($_SESSION['user'] ?? false)): ?>
                             <div class="alert alert-warning">
-                                Please <a href="#" data-bs-toggle="modal" data-bs-target="#authModal">login</a> to checkout.
+                                Please <a href="#" data-bs-toggle="modal" data-bs-target="#authModal" style="text-decoration: none; color:black;"><span style="color:aqua">Login</span></a> to checkout.
                             </div>
                         <?php else: ?>
                             <form action="/cart/checkout" method="POST">
@@ -135,6 +135,6 @@ $cartItems = $_SESSION['cart'] ?? [];
             <p>Explore our <a href="/products">products</a> to start shopping.</p>
         </div>
     <?php endif; ?>
-
-    <?php require base_path('views/client/partials/newsletter.php') ?>
-    <?php require base_path('views/client/partials/footer.php') ?>
+</div>
+<?php require base_path('views/client/partials/newsletter.php') ?>
+<?php require base_path('views/client/partials/footer.php') ?>
