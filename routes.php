@@ -13,6 +13,10 @@ $router->get('/profile', 'client/profile/index.php');
 $router->post('/removecart', 'client/cart/remove.php');
 $router->post('/updatecart', 'client/cart/update.php');
 $router->post('/cart/checkout', 'client/cart/checkout.php');
+//update data user
+$router->get('/profile', 'client/profile/index.php');
+$router->post('/profile/update', 'client/profile/update.php')->only('auth');
+$router->post('/profile/upload-image', 'client/profile/upload-image.php')->only('auth');
 // user regisration
 $router->post('/register', 'client/registration/index.php')->only('guest');
 $router->post('/login', 'client/login/index.php')->only('guest');

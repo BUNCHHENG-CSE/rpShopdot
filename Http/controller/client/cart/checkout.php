@@ -11,14 +11,10 @@ $errors = [];
 if (!Validator::email($_POST['email'])) {
     $errors['email'] = 'Please provide a valid email address.';
 }
-
-
-
 if (empty($_SESSION['cart'])) {
     $_SESSION['cart_message'] = 'Your cart is empty.';
     redirect('/cart');
 }
-
 if (!empty($errors)) {
     $_SESSION['cart_message'] = implode(', ', $errors);
     redirect('/cart');

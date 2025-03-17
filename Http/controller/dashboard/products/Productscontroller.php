@@ -66,8 +66,6 @@ class ProductsController
         $quantity = isset($_GET['quantity']) ? max(1, intval($_GET['quantity'])) : 1;
         if ($quantity > $product['stock']) {
             $_SESSION['cart_message'] = "Sorry, mean {$product['stock']} tah pin ng te ";
-        } else {
-            $_SESSION['cart_message'] = "Product added jol hz";
         }
         $product['quantity'] = min($quantity, $product['stock']);
 

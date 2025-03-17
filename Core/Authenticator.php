@@ -8,13 +8,20 @@ class Authenticator
     {
 
         $user = (App::resolve(Database::class))->query('SELECT * FROM users WHERE email = :email', ['email' => $email])->find();
-
+        if (!$user) {
+            error_log("No user found with email: $email");
+            return false;
+        }
+        if (!password_verify($password, $user['password'])) {
+            error_log("Password verification failed for email: $email");
+            return false;
+        }
         if ($user) {
             dd($user['roles_id']);
             if (password_verify($password, $user['password'])) {
 
                 $this->login([
-                    'id' => $user['id'],
+                    'id' => $user['user_id'],
                     'email' => $email,
                     'name' => $user['name'],
                     'image_url' => $user['image_url'],
@@ -32,7 +39,7 @@ class Authenticator
     public function login($user)
     {
         $_SESSION['user'] = [
-            'id'=> $user['id'],
+            'id' => $user['id'],
             'email' => $user['email'],
             'name' => $user['name'],
             'image_path' => $user['image_url'],

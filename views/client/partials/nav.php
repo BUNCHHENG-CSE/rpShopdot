@@ -64,7 +64,6 @@
                                 aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
-                                        <!-- Modal Header with Nav Tabs -->
                                         <div class="modal-header">
                                             <ul class="nav nav-tabs w-100" id="authTab" role="tablist">
 
@@ -141,7 +140,6 @@
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <!-- Sign Up Form -->
                                                 <div
                                                     class="tab-pane fade"
                                                     id="signup"

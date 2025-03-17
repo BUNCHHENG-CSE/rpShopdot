@@ -98,5 +98,8 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 <script src="/../asset/js/script.js"></script>
+<?php if (isset($_SESSION['user']) && $_SERVER['REQUEST_URI'] === '/profile'): ?>
+    <script src="/../asset/js/profile.js"></script>
+<?php endif; ?>
 
 </html>
