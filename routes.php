@@ -48,3 +48,8 @@ $router->post('/tborders/delete', 'dashboard/orders/index.php')->only('superuser
 $router->get('/tbusers', 'dashboard/users/index.php')->only('superuser');
 $router->post('/tbusers/update', 'dashboard/users/index.php');
 $router->post('/tbusers/delete', 'dashboard/users/index.php')->only('superuser');
+
+//order dashboard
+$router->get('/tborders', 'dashboard/orders/index.php')->only('superuser');
+$router->post('/tborders/update', 'dashboard/orders/index.php')->only('superuser');
+$router->post('/tborders/delete', 'dashboard/orders/index.php')->only('superuser');

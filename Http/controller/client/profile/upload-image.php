@@ -6,7 +6,6 @@ use Core\Services\ImageUploadService;
 $cloudinary = App::resolve(ImageUploadService::class);
 
 header('Content-Type: application/json');
-
 try {
     if (!isset($_FILES['profile_image']) || $_FILES['profile_image']['error'] !== UPLOAD_ERR_OK) {
         echo json_encode([

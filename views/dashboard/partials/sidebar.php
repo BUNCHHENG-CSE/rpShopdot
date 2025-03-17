@@ -3,8 +3,7 @@
     <div class="sidenav-header">
         <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
-        <a class="navbar-brand m-0" href="/"
-            >
+        <a class="navbar-brand m-0" href="/">
             <span class="ms-1 font-weight-bold">Shop. Dashboard</span>
         </a>
     </div>
@@ -57,8 +56,17 @@
                     </div>
                     <span class="nav-link-text ms-1">Users</span>
                 </a>
-            </li>
 
+            </li>
+            <li class="nav-item">
+                <a class="nav-link  <?= urlIs('/tbclients') ? "active" : "" ?>" href="/tbclients">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-single-02 text-lg opacity-10 <?= urlIs('/tbclients') ? "" : " text-dark" ?>" aria-hidden="true"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Client</span>
+                </a>
+            </li>
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Order pages</h6>
             </li>

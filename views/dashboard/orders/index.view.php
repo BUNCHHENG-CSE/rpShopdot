@@ -8,13 +8,13 @@
                 <div class="col-6 d-flex align-items-center">
                     <h6 class="mb-0">Order Tables</h6>
                 </div>
-                <!-- <div class="col-6 d-flex">
+                <div class="col-6 d-flex">
                     <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search"
                                 aria-hidden="true"></i></span>
                         <input type="text" class="form-control" placeholder="Type here...">
                     </div>
-                </div> -->
+                </div>
             </div>
         </div>
         <div class="container-fluid py-4">
@@ -33,31 +33,44 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-lg">MRGB2000JS1A</h6>
+                                        <?php foreach ($orders as $order): ?>
+                                            <tr>
+                                                <td>
+                                                    <div class="d-flex px-2 py-1">
+                                                        <div class="d-flex flex-column justify-content-center">
+                                                            <h6 class="mb-0 text-lg"><?= $order['user_id'] ?></h6>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <p class="text-md font-weight-bold mb-0">$7999.99</p>
-
-                                            </td>
-                                            <td class="align-middle text-center text-sm">
-                                                <p class="text-md font-weight-bold mb-0">10</p>
-                                            </td>
-
-
-                                            <td class="align-middle">
-                                                <div class="ms-auto text-end">
-                                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0"
-                                                        href="javascript:;"><i class="far fa-trash-alt me-2 text-md"></i>Delete</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-
+                                                </td>
+                                                <td>
+                                                    <p class="text-md font-weight-bold mb-0">$<?= number_format($order['total_price'], 2) ?></p>
+                                                </td>
+                                                <td class="align-middle  text-sm">
+                                                    <form action="/tborders/update" method="POST">
+                                                        <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
+                                                        <select name="status" class="form-select" onchange="this.form.submit()">
+                                                            <option value="pending" <?= $order['status'] === 'pending' ? 'selected' : '' ?>>Pending</option>
+                                                            <option value="processing" <?= $order['status'] === 'processing' ? 'selected' : '' ?>>Processing</option>
+                                                            <option value="shipped" <?= $order['status'] === 'shipped' ? 'selected' : '' ?>>Shipped</option>
+                                                            <option value="delivered" <?= $order['status'] === 'delivered' ? 'selected' : '' ?>>Delivered</option>
+                                                            <option value="cancelled" <?= $order['status'] === 'cancelled' ? 'selected' : '' ?>>Cancelled</option>
+                                                        </select>
+                                                    </form>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <div class="ms-auto text-end">
+                                                        <form action="/tborders/delete" method="POST"
+                                                            onsubmit="return confirm('Are you sure you want to delete this order?');">
+                                                            <input type="hidden" name="order_id" value="<?= $order['order_id'] ?>">
+                                                            <button type="submit" class="btn btn-link text-danger text-gradient px-3 mb-0">
+                                                                <i class="far fa-trash-alt me-2 text-md"></i>
+                                                                Delete
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -70,5 +83,4 @@
 </div>
 
 <?php require base_path('views/dashboard/partials/smallerfooter.php') ?>
-
 <?php require base_path('views/dashboard/partials/footer.php') ?>

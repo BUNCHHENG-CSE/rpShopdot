@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const uploadedImageUrlInput = document.getElementById("uploaded-image-url");
   const originalImageSrc = profileImagePreview.src;
 
-  // Function to preview selected image
   function previewImage(input) {
     const file = input.files[0];
     const reader = new FileReader();
@@ -21,9 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Function to validate file
   function validateFile(file) {
-    const maxFileSize = 5 * 1024 * 1024; // 5MB
+    const maxFileSize = 5 * 1024 * 1024;
     const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
 
     if (file.size > maxFileSize) {
@@ -39,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return true;
   }
 
-  // Function to upload image
   function uploadImage(file) {
     const formData = new FormData();
     formData.append("profile_image", file);
@@ -67,7 +64,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
   }
 
-  // Event listener for file input change
   profileImageInput.addEventListener("change", function (event) {
     const file = event.target.files[0];
     if (file) {
@@ -80,7 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Event listener for Upload Photo button
   uploadPhotoBtn.addEventListener("click", function () {
     profileImageInput.click();
   });
